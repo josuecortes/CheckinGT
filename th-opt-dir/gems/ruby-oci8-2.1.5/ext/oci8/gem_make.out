@@ -1,0 +1,55 @@
+/usr/local/bin/ruby extconf.rb
+checking for load library path... 
+  LD_LIBRARY_PATH is not set.
+  checking ld.so.conf... no
+checking for cc... ok
+checking for gcc... yes
+checking for LP64... no
+checking for sys/types.h... yes
+checking for ruby header... ok
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/local/bin/ruby
+	--with-instant-client
+	--without-instant-client
+/home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:889:in `get_home': RuntimeError (RuntimeError)
+	from /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:705:in `initialize'
+	from /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:320:in `new'
+	from /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:320:in `get'
+	from extconf.rb:18:in `<main>'
+---------------------------------------------------
+Error Message:
+  Set the environment variable ORACLE_HOME if Oracle Full Client.
+  Append the path of Oracle client libraries to LD_LIBRARY_PATH if Oracle Instant Client.
+  
+  The 'sudo' command unset some environment variables for security reasons.
+  Pass required varialbes as follows
+       sudo env LD_LIBRARY_PATH=$LD_LIBRARY_PATH /usr/local/bin/gem install ruby-oci8 -with-opt-dir /opt/oracle/instantclient_11_2/
+    or 
+       sudo env ORACLE_HOME=$ORACLE_HOME /usr/local/bin/gem install ruby-oci8 -with-opt-dir /opt/oracle/instantclient_11_2/
+  
+Backtrace:
+  /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:889:in `get_home'
+  /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:705:in `initialize'
+  /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:320:in `new'
+  /home/josue/Fontes/checkingGT/th-opt-dir/gems/ruby-oci8-2.1.5/ext/oci8/oraconf.rb:320:in `get'
+  extconf.rb:18:in `<main>'
+---------------------------------------------------
+See:
+ * http://ruby-oci8.rubyforge.org/en/HowToInstall.html
+ * http://ruby-oci8.rubyforge.org/en/ReportInstallProblem.html
+
