@@ -25,7 +25,17 @@
 				</p>
 			</div>
 		</div>
+		
+		<div class="control-group">
+			<%= f.label :cpf, "CPF", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cpf, :class=>"input-large", :placeholder=>"888.111.222-20", :required=>true %>
+				<p class="help-block">
 
+				</p>
+			</div>
+		</div>
+		
 		<div class="control-group">
 			<%= f.label :email, "E-mail", :class=>"control-label" %>
 			<div class="controls">

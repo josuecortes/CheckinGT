@@ -1,0 +1,93 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_dads_path %> | Editando DAD <%= @aquaviario_dad.id %> </h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@aquaviario_dad, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @aquaviario_dad.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@aquaviario_dad.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @aquaviario_dad.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+	
+		<%= f.hidden_field :usuario_alterou_id, :value=>@usuario_logado.id %>
+				
+		<div class="control-group">
+			<%= f.label :empurrador, :class=>"control-label" %>
+		  <div class="controls">
+				<%= f.text_field :empurrador, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :balsa, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :balsa, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :porto_origem, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :porto_origem, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :porto_destino_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:porto_destino_id, Core::Porto.order('descricao'),
+										:id, :descricao, {:prompt => true}, 
+										:required=>true, :class=>"input-xlarge") 
+    			%>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :previsao_chegada, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :previsao_chegada, :class=>"input-xlarge", @aquaviario_dad.previsao_chegada.to_s_br %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>
+
+<%= link_to 'Voltar', aquaviario_dads_path %>
+
+

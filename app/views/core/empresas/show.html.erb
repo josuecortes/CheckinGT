@@ -1,0 +1,45 @@
+<div class="page-header">
+	<h3>Exibindo core_empresa</h3>
+</div>
+
+
+<p>
+	<strong>Cnpj:</strong>
+	<%= @core_empresa.cnpj %>
+</p>
+
+
+<p>
+	<strong>Inscricao estadual:</strong>
+	<%= @core_empresa.inscricao_estadual %>
+</p>
+
+
+<p>
+	<strong>Descricao:</strong>
+	<%= @core_empresa.descricao %>
+</p>
+
+
+<p>
+	<strong>Endereco:</strong>
+	<%= @core_empresa.endereco %>
+</p>
+
+
+<p>
+	<strong>Uf:</strong>
+	<%= @core_empresa.uf_id %>
+</p>
+
+
+<p>
+	<strong>Cidade:</strong>
+	<%= @core_empresa.cidade %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_empresa_path(@core_empresa) %> |
+<%= link_to 'Voltar', core_empresas_path %>
+

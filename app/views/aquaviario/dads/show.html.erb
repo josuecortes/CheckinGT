@@ -1,0 +1,63 @@
+<div class="page-header">
+	<h3>Exibindo aquaviario_dad</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @aquaviario_dad.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Porto origem:</strong>
+	<%= @aquaviario_dad.porto_origem %>
+</p>
+
+
+<p>
+	<strong>Porto destino:</strong>
+	<%= @aquaviario_dad.porto_destino_id %>
+</p>
+
+
+<p>
+	<strong>Empurrador:</strong>
+	<%= @aquaviario_dad.empurrador %>
+</p>
+
+
+<p>
+	<strong>Balsa:</strong>
+	<%= @aquaviario_dad.balsa %>
+</p>
+
+
+<p>
+	<strong>Previsao chegada:</strong>
+	<%= @aquaviario_dad.previsao_chegada %>
+</p>
+
+
+<p>
+	<strong>Efetiva chegada:</strong>
+	<%= @aquaviario_dad.efetiva_chegada %>
+</p>
+
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @aquaviario_dad.usuario_id %>
+</p>
+
+
+<p>
+	<strong>Usuario alterou:</strong>
+	<%= @aquaviario_dad.usuario_alterou_id %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_aquaviario_dad_path(@aquaviario_dad) %> |
+<%= link_to 'Voltar', aquaviario_dads_path %>
+

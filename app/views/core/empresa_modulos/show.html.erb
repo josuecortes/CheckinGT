@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h3>Exibindo core_empresa_modulo</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @core_empresa_modulo.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Modulo:</strong>
+	<%= @core_empresa_modulo.modulo_id %>
+</p>
+
+
+<p>
+	<strong>Status:</strong>
+	<%= @core_empresa_modulo.status %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_empresa_modulo_path(@core_empresa_modulo) %> |
+<%= link_to 'Voltar', core_empresa_modulos_path %>
+

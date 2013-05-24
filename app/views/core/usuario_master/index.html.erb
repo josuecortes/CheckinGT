@@ -1,0 +1,41 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_empresas_path %> | Usuario Master da Empresa <%= @empresa.cnpj %></h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>CPF</th>
+			<th>E-mail</th>
+			<th>Status</th>
+			<th>Mudar Senha</th>
+			<th>Empresa</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+	<% @core_usuarios.each do |core_usuario| %>
+	<tbody>
+		<tr>
+			<td><%= core_usuario.nome %></td>
+			<td><%= core_usuario.cpf %></td>
+			<td><%= core_usuario.email %></td>
+			<td><%= core_usuario.usuario_ativo %></td>
+			<td><%= core_usuario.usuario_mudar_senha %></td>
+			<% if core_usuario.empresa_id != nil %>
+			<td><%= core_usuario.empresa.cnpj %></td>
+			<% else %>
+			<td></td>
+			<% end %>
+			<td><%= link_to 'Editar', edit_core_empresa_usuario_master_path(@empresa, core_usuario), :class=>"btn btn-primary btn-small" %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<br />
+<% if @core_usuarios.size < 1 %>
+<%= link_to 'Adicionar Usuario Master', new_core_empresa_usuario_master_path, :class=>"btn btn-success" %>
+<% end %>

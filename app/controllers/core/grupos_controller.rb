@@ -1,6 +1,6 @@
 class Core::GruposController < ApplicationController
   def index
-    @grupos = Core::Grupo.order(:transportadora_id)
+    @grupos = Core::Grupo.order(:empresa_id)
   end
 
   def show

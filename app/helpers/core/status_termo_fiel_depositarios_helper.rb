@@ -1,0 +1,2 @@
+module Core::StatusTermoFielDepositariosHelper
+end

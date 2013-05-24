@@ -1,0 +1,60 @@
+<div class="page-header">
+	<h3>Lista de core_empresas</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Cnpj</th>
+			
+			<th>Inscricao estadual</th>
+			
+			<th>Descricao</th>
+			
+			<th>Endereco</th>
+			
+			<th>Uf</th>
+			
+			<th>Cidade</th>
+			
+			<th>Status</th>			
+			
+			<th></th>
+			
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_empresas) do |core_empresa| %>
+		
+		<td><%= core_empresa.cnpj %></td>
+		
+		<td><%= core_empresa.inscricao_estadual %></td>
+		
+		<td><%= core_empresa.descricao %></td>
+		
+		<td><%= core_empresa.endereco %></td>
+		
+		<td><%= core_empresa.uf.sigla %></td>
+		
+		<td><%= core_empresa.cidade %></td>
+		
+		<td><%= core_empresa.status %></td>
+		
+		<td>
+			<%= link_to 'Mostrar', core_empresa, :class=>"btn btn-small"%>
+			<%= link_to 'Editar', edit_core_empresa_path(core_empresa), :class=>"btn btn-primary btn-small" %>
+			<%= link_to 'Apagar', core_empresa, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %>
+			<%= link_to 'Modulos', core_empresa_empresa_modulos_path(core_empresa), :class=>"btn btn-success btn-small" %>
+			<%= link_to 'Cad Usuario', core_empresa_usuario_master_index_path(core_empresa), :class=>"btn btn-success btn-small" %>
+			<%= link_to 'Cad Porto', core_empresa_portos_path(core_empresa), :class=>"btn btn-success btn-small" %>
+		</td>		
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Empresa', new_core_empresa_path, :class=>"btn btn-success" %>
+

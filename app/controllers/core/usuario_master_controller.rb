@@ -1,0 +1,93 @@
+class Core::UsuarioMasterController < ApplicationController
+
+	def index
+		@empresa = Core::Empresa.find(params[:empresa_id])
+		@core_usuarios = @empresa.usuarios.master.all
+		
+	end
+	
+	def show
+		@empresa = Core::Empresa.find(params[:empresa_id])
+    @core_usuario = Core::Usuario.find(params[:id])
+
+  end
+
+  def new
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+  	@core_usuario = @empresa.usuarios.master.all
+		if @core_usuario.size >= 1
+			flash[:message] = "Esta empresa ja tem um usuario master"
+			redirect_to core_empresa_usuario_master_index_path(@empresa)
+			
+		else
+    	@core_usuario = Core::Usuario.new
+		end
+  end
+
+  def edit
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+    @core_usuario = Core::Usuario.find(params[:id])
+  end
+
+  def create
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+    @core_usuario = Core::Usuario.new(params[:core_usuario])
+
+    if @core_usuario.save
+      flash[:success] = "Salvo com Successo"
+      redirect_to core_empresa_usuario_master_index_path(@empresa)
+    else
+      flash[:error] = "Erro ao Salvar"
+      render action: "new"
+    end
+  end
+
+  def update
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+    @core_usuario = Core::Usuario.find(params[:id])
+
+    if @core_usuario.update_attributes(params[:core_usuario])
+      flash[:success] = "Atualizado com Successo"
+      redirect_to core_empresa_usuario_master_index_path(@empresa)
+    else
+      flash[:error] = "Erro ao Atualizar"
+      render action: "edit"
+    end
+  end
+
+  def destroy
+    @core_usuario = Core::Usuario.find(params[:id])
+    if @core_usuario.status == true
+      @core_usuario.status = false
+    else
+      @core_usuario.status = true
+    end
+
+    @core_usuario.save
+
+    flash[:success] = "Status Modificado com Successo"
+
+    respond_to do |format|
+      format.html { redirect_to core_usuarios_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def resetasenha
+    @core_usuario = Core::Usuario.find(params[:usuario_id])
+    if @core_usuario
+      @core_usuario.mudarsenha = true
+      @core_usuario.senha.senha = "@mudar"
+    end
+
+    @core_usuario.save
+    @core_usuario.senha.save
+
+    respond_to do |format|
+      format.html { redirect_to core_empresa_usuario_master_index_path(@empresa) }
+      format.json { head :no_content }
+    end
+
+  end
+
+end

@@ -1,0 +1,45 @@
+<div class="page-header">
+	<h3>Exibindo core_porto</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @core_porto.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Regsitro imovel:</strong>
+	<%= @core_porto.regsitro_imovel %>
+</p>
+
+
+<p>
+	<strong>Endereco:</strong>
+	<%= @core_porto.endereco %>
+</p>
+
+
+<p>
+	<strong>Uf:</strong>
+	<%= @core_porto.uf_id %>
+</p>
+
+
+<p>
+	<strong>Cidade:</strong>
+	<%= @core_porto.cidade %>
+</p>
+
+
+<p>
+	<strong>Status:</strong>
+	<%= @core_porto.status %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_empresa_porto_path(@empresa, @core_porto) %> |
+<%= link_to 'Voltar', core_empresa_portos_path(@empresa) %>
+

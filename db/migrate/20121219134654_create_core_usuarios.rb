@@ -14,9 +14,11 @@ class CreateCoreUsuarios < ActiveRecord::Migration
       t.string :correnteloginip
       t.string :ultimologinip
 
-      t.integer :transportadora_id
+      t.integer :empresa_id
+      t.string :cpf
+      t.boolean :master
 
-      t.timestamps
+      t.timestamps 
     end
 
   end

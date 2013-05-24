@@ -1,0 +1,2 @@
+module Core::StatusSeloFiscalTiposHelper
+end

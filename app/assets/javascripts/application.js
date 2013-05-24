@@ -15,6 +15,8 @@
 
 //= require bootstrap.min.js
 
+//= require mascaras.js
+
 //= require_tree .
 
 !function ($) {

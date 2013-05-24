@@ -23,7 +23,7 @@ class Core::UsuarioGruposController < ApplicationController
     if params[:usuarios]
       params[:usuarios].each {|u| Core::UsuarioGrupo.create(:usuario_id=>u, :grupo_id=>params[:grupo_id])}
       flash[:success] = "Usuario(s) Adicionado(s) ao Grupo!"
-      redirect_to core_grupo_grupo_usuarios_path(@grupo)
+      redirect_to core_grupo_usuario_grupos_path(@grupo)
     else
       flash[:notice] = "Nada Adicionado"
       render action: "index"
@@ -36,7 +36,7 @@ class Core::UsuarioGruposController < ApplicationController
     @grupo_usuario.destroy
 
     flash[:success] = "Usuario Apagado do Grupo"
-    redirect_to core_grupo_grupo_usuarios_path(@grupo_usuario.grupo_id)
+    redirect_to core_grupo_usuario_grupos_path(@grupo_usuario.grupo_id)
   end
 
 end

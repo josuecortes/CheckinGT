@@ -1,0 +1,2 @@
+module Core::TipoDetalhesHelper
+end

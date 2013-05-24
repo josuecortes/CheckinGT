@@ -1,34 +1,38 @@
 class Core::Usuario < ActiveRecord::Base
   #accessibles
-  attr_accessible :email, :email_confirmation, :mudarsenha, :nome, :numlogin, :status, :transportadora_id
+  attr_accessible :email, :email_confirmation, :mudarsenha, :nome, :numlogin, :status, :empresa_id,
+  								:cpf, :master
 
   attr_accessor :email_confirmation
   #precisa disto para acessar o avatar com o plugin paperclip
   #apaguei o avatar
   #has_attached_file :avatar, :styles => { :medium => "300x300", :thumb => "100x100" }
-
+	
+	scope :master, {:conditions=>['master = ?', true]}
+	
   #relacionamentos
-  belongs_to :transportadora, :class_name=>"Core::Transportadora"
+  belongs_to :empresa, :class_name=>"Core::Empresa"
 
   has_one :senha, :class_name=>"Core::Senha"
   has_many :usuario_grupos, :class_name=>"Core::UsuarioGrupo"
   has_many :grupos, :through=>:usuario_grupos, :class_name=>"Core::Grupo"
   has_many :sistemas, :through=>:grupos, :class_name=>"Core::Sistema"
   has_many :modulos, :through=>:sistemas, :class_name=>"Core::Modulo"
-
-  has_many :embarques, :class_name=>"Aquaviario::Embarque"
-
-  has_many :npfs, :class_name=>"Core::Npf"
-  has_many :npjs, :class_name=>"Core::Npj"
-  has_many :negativacao_tipo, :class_name=>"Core::NegativacaoTipo"
+  has_many :dads, :class_name=>"Aquaviario::Dad"
 
   #validações
+  validates_presence_of :cpf	
+  validates_uniqueness_of :cpf
   validates_presence_of :nome
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_confirmation_of :email
   #chamadas de funcões
+  
+  after_save :verifica_master
+    
   after_create :cria_senha
+  
   #funções
   def cria_senha
     s = Core::Senha.new
@@ -65,6 +69,15 @@ class Core::Usuario < ActiveRecord::Base
       "Inativo"
     end
   end
+
+	def verifica_master
+		if self.master == true
+			grupos = self.empresa.grupos.all
+			grupos.each do |grupo|
+				Core::UsuarioGrupo.find_or_create_by_grupo_id_and_usuario_id(:grupo_id=>grupo.id, :usuario_id=>self.id)
+			end
+		end
+	end
 
   scope :da_transportadora, lambda {|id| {:conditions=>['transportadora_id = ?', id]}}
 

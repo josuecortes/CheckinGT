@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h3>Lista de core_tipo_eventos</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Descricao</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_tipo_eventos) do |core_tipo_evento| %>
+		
+		<td><%= core_tipo_evento.descricao %></td>
+		
+		<td><%= link_to 'Mostrar', core_tipo_evento, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_tipo_evento_path(core_tipo_evento), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_tipo_evento, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Tipo evento', new_core_tipo_evento_path, :class=>"btn btn-success" %>
+

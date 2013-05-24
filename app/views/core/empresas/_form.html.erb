@@ -1,0 +1,94 @@
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_empresa, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @core_empresa.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_empresa.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @core_empresa.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		
+		<div class="control-group">
+			<%= f.label :cnpj, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cnpj, :class=>"input-large", :required=>true %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :inscricao_estadual, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :inscricao_estadual, :class=>"input-large" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :descricao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :descricao, :class=>"input-xxlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :endereco, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :endereco, :class=>"input-xxlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :uf_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:uf_id, Core::Uf.order('sigla'),
+										:id, :sigla, {:prompt => true}, 
+										:required=>true, :class=>"input-small") 
+    			%>
+				
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :cidade, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cidade, :class=>"input-xxlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

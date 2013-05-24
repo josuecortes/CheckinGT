@@ -1,0 +1,66 @@
+<div class="page-header">
+	<h3>Lista de aquaviario_dads</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Numero DAD</th>
+			
+			<th>Empurrador</th>			
+			
+			<th>Balsa</th>			
+			
+			<th>Porto origem</th>
+			
+			<th>Quantidade de cargas</th>
+			
+			<th>Porto destino</th>
+			
+			<th>Previsao chegada</th>
+			
+			<th>Status DAD</th>
+			
+			<th>Data status DAD</th>
+			
+			<th>Status proc</th>
+
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @aquaviario_dads) do |aquaviario_dad| %>
+		
+		<td><%= aquaviario_dad.id %></td>
+		
+		<td><%= aquaviario_dad.empurrador %></td>
+		
+		<td><%= aquaviario_dad.balsa %></td>
+		
+		<td><%= aquaviario_dad.porto_origem %></td>
+		
+		<td><%= %></td>
+		
+		<td><%= aquaviario_dad.porto_destino.descricao %></td>
+		
+		<td><%= aquaviario_dad.previsao_chegada.to_s_br %></td>
+		
+		<td><%= aquaviario_dad.status_dad.descricao %></td>
+		
+		<td><%= aquaviario_dad.status_dad_data.to_s_br %></td>
+		
+		<td><%= aquaviario_dad.status_processamento.descricao %></td>
+		
+		<td><%= link_to 'Mostrar', aquaviario_dad, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_aquaviario_dad_path(aquaviario_dad), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', aquaviario_dad, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Dad', new_aquaviario_dad_path, :class=>"btn btn-success" %>
+

@@ -3,7 +3,7 @@ class CreateCoreModulos < ActiveRecord::Migration
     create_table :core_modulos do |t|
       t.string :nome
       t.string :sigla
-      t.boolean :status
+      t.boolean :status, :default=>true
 
       t.timestamps
     end

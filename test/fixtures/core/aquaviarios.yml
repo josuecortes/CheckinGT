@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  empresa_id: MyString
+  registro_antaq: MyString
+  status: false
+
+two:
+  empresa_id: MyString
+  registro_antaq: MyString
+  status: false

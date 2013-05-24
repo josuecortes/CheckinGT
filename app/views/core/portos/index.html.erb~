@@ -1,0 +1,51 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_empresas_path %> | Lista de Portos da empresa <%= @empresa.cnpj %></h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+		
+			<th>Descrição</th>
+						
+			<th>Regsitro imovel</th>
+			
+			<th>Endereco</th>
+			
+			<th>Uf</th>
+			
+			<th>Cidade</th>
+			
+			<th>Status</th>
+			
+			<th></th>
+			
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_portos) do |core_porto| %>
+		
+		td><%= core_porto.descricao %></td>
+						
+		<td><%= core_porto.regsitro_imovel %></td>
+		
+		<td><%= core_porto.endereco %></td>
+		
+		<td><%= core_porto.uf.sigla %></td>
+		
+		<td><%= core_porto.cidade %></td>
+		
+		<td><%= core_porto.empresa_id %></td>
+		
+		<td><%= link_to 'Mostrar', core_empresa_porto_path(@empresa, core_porto), :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_empresa_porto_path(@empresa, core_porto), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_empresa_porto_path(@empresa, core_porto), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Porto', new_core_empresa_porto_path, :class=>"btn btn-success" %>
+

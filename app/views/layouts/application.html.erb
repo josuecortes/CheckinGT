@@ -34,9 +34,12 @@
 								            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= m.nome %> <b class="caret"></b></a>
 								            <ul class="dropdown-menu" id="swatch-menu">
 									            <% @usuario_logado.sistemas.each do |s| %>
-									            <% if s.modulo_id == m.id and s.url != nil%>
+									            <% if s.modulo_id == m.id and (s.url != nil and s.url != "") %>
 									            <li>
-										            <%= link_to s.nome, :controller=>s.url, :action=>:index %>
+										            <%= 
+										            	link_to s.nome, :controller=>s.url, :action=>:index 
+
+										            %>
 									            </li>
 									            <% end %>
 									            <% end %>
@@ -59,9 +62,9 @@
 							    		<li>
 								    		<%= link_to 'Alterar Senha', edit_core_usuario_senha_path(@usuario_logado, @usuario_logado.senha.id) %>
 										</li>
-										<% if @usuario_logado.transportadora_id != nil %>
+										<% if @usuario_logado.empresa_id != nil %>
 											<li class="divider"></li>
-											<%= @usuario_logado.transportadora.razaosocial %>
+											<%= @usuario_logado.empresa.inscricao_estadual %>
 										<% end %>	
 							    		<li class="divider"></li>
 							    		<li>

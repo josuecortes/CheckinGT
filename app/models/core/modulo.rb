@@ -4,6 +4,7 @@ class Core::Modulo < ActiveRecord::Base
 
   #relacionamentos
   has_many :sistemas, :class_name=>"Core::Sistema"
+  has_many :empresa_modulos, :class_name=>"Core::EmpresaModulo"
 
   #validações
   validates_presence_of :nome

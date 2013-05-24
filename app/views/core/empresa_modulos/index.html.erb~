@@ -1,0 +1,39 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_empresas_path %> | Lista de Modulos da Empresa <%= @empresa.cnpj %></h3>
+</div>
+
+<h3>Adicionar Modulo</h3>
+<%= render "form" %>
+
+<hr>
+
+<h3>Lista de Modulos</h3>
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Modulo</th>
+			
+			<th>Status</th>
+			
+			
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @empresa_modulos) do |empresa_modulo| %>
+		
+		<td><%= empresa_modulo.modulo.nome %></td>
+		
+		<td><%= empresa_modulo.status %></td>	
+		
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= 
+#link_to 'Novo(a) Empresa modulo', new_core_empresa_modulo_path, :class=>"btn btn-success" 
+%>
+

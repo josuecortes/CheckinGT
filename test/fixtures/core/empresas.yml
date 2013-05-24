@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cnpj: MyString
+  inscricao_estadual: MyString
+  descricao: MyString
+  endereco: MyString
+  uf_id: 1
+  cidade: MyString
+
+two:
+  cnpj: MyString
+  inscricao_estadual: MyString
+  descricao: MyString
+  endereco: MyString
+  uf_id: 1
+  cidade: MyString

@@ -7,7 +7,7 @@ class CreateCoreSistemas < ActiveRecord::Migration
       t.string :url
       t.string :controlador
       t.string :icone
-      t.boolean :status
+      t.boolean :status, :default=>true
       t.integer :modulo_id
 
       t.timestamps

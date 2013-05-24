@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  empresa_id: 1
+  porto_origem: MyString
+  porto_destino_id: 1
+  empurrador: MyString
+  balsa: MyString
+  previsao_chegada: 2013-05-24 10:56:24
+  efetiva_chegada: 2013-05-24 10:56:24
+  usuario_id: 1
+  usuario_alterou_id: 1
+
+two:
+  empresa_id: 1
+  porto_origem: MyString
+  porto_destino_id: 1
+  empurrador: MyString
+  balsa: MyString
+  previsao_chegada: 2013-05-24 10:56:24
+  efetiva_chegada: 2013-05-24 10:56:24
+  usuario_id: 1
+  usuario_alterou_id: 1

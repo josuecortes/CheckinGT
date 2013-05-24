@@ -1,0 +1,2 @@
+module Core::StatusUnidadeCargasHelper
+end
