@@ -31,7 +31,10 @@ s16 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Cont
 s17 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Selo Fiscal", :sigla=>"ContStatusSeloFiscalGeral", :url=>"/core/status_selo_fiscal_tipos", :controlador=>"Core::StatusSeloFiscalTiposController", :status=>true)
 s18 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Fiel Depositario", :sigla=>"ContStatusFielDepositarioGeral", :url=>"/core/status_termo_fiel_depositarios", :controlador=>"Core::StatusTermoFielDepositariosController", :status=>true)
 s19 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Tipo de Detalhe", :sigla=>"ContStatusTipoDetalhesGeral", :url=>"/core/tipo_detalhes", :controlador=>"Core::TipoEventosController", :status=>true)
-s20 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do TIpo de Evento", :sigla=>"ContStatusTipoEventosGeral", :url=>"/core/tipo_eventos", :controlador=>"Core::TipoDetalhesController", :status=>true)
+s20 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Tipo de Evento", :sigla=>"ContStatusTipoEventosGeral", :url=>"/core/tipo_eventos", :controlador=>"Core::TipoDetalhesController", :status=>true)
+s21 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Tipo de Unidades de Carga", :sigla=>"ContTipoUCGeral", :url=>"/core/tipo_unidades", :controlador=>"Core::TipoUnidadesController", :status=>true)
+s22 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Tipo de Documento Eletronico", :sigla=>"ContTipoDocuEletronGeral", :url=>"/core/tipo_documento_eletronicos", :controlador=>"Core::TipoDocumentoEletronicosController", :status=>true)
+
 
 
 # grupos padrao do sistema
@@ -59,6 +62,10 @@ Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :s
 Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s18.id)
 Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s19.id)
 Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s20.id)
+Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s21.id)
+Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s22.id)
+
+#Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s21.id)
 
 #populanod as coisas #############################3
 
@@ -137,25 +144,17 @@ Core::TipoEvento.find_or_create_by_descricao(:descricao=>"Pendencia - procurar a
 
 #populando status tipo de detalhe
 Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"Mercadoria desacobertada de nota fiscal")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
-Core::TipoDetalhe.find_or_create_by_descricao(:descricao=>"")
+
+#populando Tipo Unidade de Carga
+Core::TipoUnidade.find_or_create_by_descricao(:descricao=>"Caminhao")
+Core::TipoUnidade.find_or_create_by_descricao(:descricao=>"Bau")
+Core::TipoUnidade.find_or_create_by_descricao(:descricao=>"Container")
+
+#populando Tipo de Documento Eletronico
+Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"CTE - Aquaviario")
+Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"CTE - Rodoviario")
+Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"NFE")
+Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"Capa de Lote")
 
 ################################## fim do core
 
@@ -166,6 +165,7 @@ mm = Core::Modulo.find_or_create_by_nome(:nome=>"Empresa", :sigla=>"ModEmpresa",
 #modulo aquaviario
 ma = Core::Modulo.find_or_create_by_nome(:nome=>"Aquaviario", :sigla=>"ModAqua", :status=>true)
 Core::Sistema.find_or_create_by_controlador(:modulo_id=>ma.id, :nome=>"Controle de Documento Auxiliar de Desembaraco", :sigla=>"ContDadAqua", :url=>"/aquaviario/dads", :controlador=>"Aquaviario::DadsController", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>ma.id, :nome=>"Controle Geral de Unidade de Carga", :sigla=>"ContUnidCargaGeral", :url=>"", :controlador=>"Aquaviario::UnidadeCargasController", :status=>true)
 
 #modulo transportadoras
 #mm = Core::Modulo.find_or_create_by_nome(:nome=>"Transportadora", :sigla=>"TransBasico", :status=>true)

@@ -1,5 +1,23 @@
 Sec::Application.routes.draw do
 
+  namespace :core do resources :tipo_documento_eletronicos end
+
+  namespace :core do resources :tipo_unidades end
+
+  namespace :core do resources :termo_fiel_depositarios end
+
+  namespace :core do resources :termo_vistoria_detalhes end
+
+  namespace :core do resources :termo_vistoria end
+
+  namespace :core do resources :termo_lacres end
+
+  namespace :core do resources :rodoviarios end
+
+  namespace :core do resources :selo_fiscals end
+
+  namespace :core do resources :fiel_depositarios end
+
   namespace :core do resources :tipo_detalhes end
 
   namespace :core do resources :tipo_eventos end
@@ -15,8 +33,6 @@ Sec::Application.routes.draw do
   namespace :core do resources :status_unidade_cargas end
 
   namespace :core do resources :status_dads end
-
-  namespace :aquaviario do resources :dads end
 
   root :to => 'home#index'
   resources :intranet
@@ -48,5 +64,13 @@ Sec::Application.routes.draw do
     
     
   end
+	
+	namespace :aquaviario do	
+		resources :dads do
+			resources :unidade_cargas do
+				resources :documento_eletronicos
+			end
+		end
+	end
 
 end

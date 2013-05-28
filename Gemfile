@@ -12,7 +12,7 @@ end
 gem 'jquery-rails'
 
 gem 'will_paginate', '~> 3.0'
-#gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip"
 
 gem "brazilian-rails"
 

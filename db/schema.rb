@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524193920) do
+ActiveRecord::Schema.define(:version => 20130527203701) do
 
   create_table "aquaviario_dads", :force => true do |t|
     t.integer  "empresa_id"
@@ -25,12 +25,41 @@ ActiveRecord::Schema.define(:version => 20130524193920) do
     t.integer  "usuario_alterou_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
-    t.integer  "status_planejamento_id"
-    t.datetime "status_planejamento_data"
     t.integer  "status_dad_id"
     t.integer  "status_processamento_id"
     t.datetime "status_dad_data"
     t.datetime "status_processamento_data"
+  end
+
+  create_table "aquaviario_documento_eletronicos", :force => true do |t|
+    t.integer  "dad_id"
+    t.integer  "unidade_carga_id"
+    t.integer  "tipo_documento_eletronico_id"
+    t.integer  "rodoviario_id"
+    t.string   "documento"
+    t.integer  "usuario_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "aquaviario_unidade_cargas", :force => true do |t|
+    t.integer  "dad_id"
+    t.integer  "tipo_unidade_id"
+    t.string   "placa"
+    t.integer  "termo_lacre_id"
+    t.integer  "termo_vistoria_id"
+    t.integer  "termo_fiel_depositario_id"
+    t.integer  "termo_fiel_depositario_data"
+    t.integer  "status_unidade_carga_id"
+    t.datetime "status_unidade_carga_data"
+    t.integer  "status_processamento_id"
+    t.datetime "status_processamento_data"
+    t.integer  "status_desembaraco_id"
+    t.datetime "status_desembaraco_data"
+    t.integer  "usuario_alterou_id"
+    t.integer  "usuario_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "core_aquaviarios", :force => true do |t|
@@ -59,6 +88,14 @@ ActiveRecord::Schema.define(:version => 20130524193920) do
     t.boolean  "status",             :default => true
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+  end
+
+  create_table "core_fiel_depositarios", :force => true do |t|
+    t.integer  "empresa_id"
+    t.string   "cpf"
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "core_grupo_sistemas", :force => true do |t|
@@ -95,6 +132,22 @@ ActiveRecord::Schema.define(:version => 20130524193920) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "descricao"
+  end
+
+  create_table "core_rodoviarios", :force => true do |t|
+    t.integer  "empresa_id"
+    t.string   "registro_antt"
+    t.boolean  "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "core_selo_fiscals", :force => true do |t|
+    t.integer  "status_selo_fiscal_tipo_id"
+    t.datetime "selo_fiscal_data"
+    t.string   "descricao"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "core_senhas", :force => true do |t|
@@ -154,13 +207,72 @@ ActiveRecord::Schema.define(:version => 20130524193920) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "core_termo_fiel_depositarios", :force => true do |t|
+    t.integer  "rodoviario_id"
+    t.integer  "rodoviario_usuario_id"
+    t.datetime "rodoviario_data_autorizacao"
+    t.integer  "fisco_usuario_id"
+    t.datetime "fisco_data_autorizacao"
+    t.integer  "porto_usuario_id"
+    t.datetime "porto_data_autorizacao"
+    t.integer  "status_termo_fiel_depositario_id"
+    t.integer  "fisco_fechamento_usuario_id"
+    t.text     "fechamento_descricao"
+    t.datetime "fechamento_data"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "core_termo_lacres", :force => true do |t|
+    t.integer  "dad_id"
+    t.integer  "unidade_carga_id"
+    t.integer  "fisco_cpf_id"
+    t.datetime "termo_lacre_data"
+    t.string   "termo_lacre_numero"
+    t.string   "observacoes"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "core_termo_vistoria", :force => true do |t|
+    t.integer  "dad_id"
+    t.integer  "unidade_carga_id"
+    t.datetime "termo_vistoria_data_inicio"
+    t.datetime "termo_vistoria_data_final"
+    t.string   "observacoes"
+    t.string   "termo_contagem"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "core_termo_vistoria_detalhes", :force => true do |t|
+    t.integer  "termo_vistoria_id"
+    t.integer  "termo_vistoria_tipo_detalhe_id"
+    t.decimal  "valor_devido",                   :precision => 14, :scale => 2
+    t.text     "observacoes"
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
+  end
+
   create_table "core_tipo_detalhes", :force => true do |t|
     t.string   "descricao"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  create_table "core_tipo_documento_eletronicos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "core_tipo_eventos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "core_tipo_unidades", :force => true do |t|
     t.string   "descricao"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

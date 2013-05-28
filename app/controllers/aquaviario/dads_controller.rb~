@@ -3,7 +3,7 @@ class Aquaviario::DadsController < ApplicationController
   def index
   #consulta de dads do usuario logado de determinada empresa
   
-    @aquaviario_dads = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).all
+    @aquaviario_dads = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).paginate(:page => params[:page], :per_page => 2).all
   end
 
   
@@ -47,12 +47,8 @@ class Aquaviario::DadsController < ApplicationController
   end
 
   def destroy
-    @aquaviario_dad = Aquaviario::Dad.find(params[:id])
-    @aquaviario_dad.destroy
-
-    respond_to do |format|
-      format.html { redirect_to aquaviario_dads_url }
-      format.json { head :no_content }
-    end
+    @aquaviario_dad = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).find(params[:id])
+   #@aquaviario_dad.destroy
+    redirect_to aquaviario_dads_path
   end
 end

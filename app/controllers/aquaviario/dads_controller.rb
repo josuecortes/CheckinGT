@@ -3,7 +3,7 @@ class Aquaviario::DadsController < ApplicationController
   def index
   #consulta de dads do usuario logado de determinada empresa
   
-    @aquaviario_dads = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).all
+    @aquaviario_dads = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).paginate(:page => params[:page], :per_page => 1).all
   end
 
   

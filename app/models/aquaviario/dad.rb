@@ -10,6 +10,7 @@ class Aquaviario::Dad < ActiveRecord::Base
   belongs_to :usuario_alterou, :foreign_key=>"usuario_alterou_id", :class_name=>"Core::Usuario"
   belongs_to :status_processamento, :class_name=>"Core::StatusProcessamento"
   belongs_to :status_dad, :class_name=>"Core::StatusDad"
+  has_many :unidade_cargas, :class_name=>"Aquaviario::UnidadeCarga"
   
   
   scope :da_empresa, lambda {|id| {:conditions=>['empresa_id = ?', id]}}

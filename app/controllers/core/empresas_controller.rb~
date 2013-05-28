@@ -58,10 +58,12 @@ class Core::EmpresasController < ApplicationController
     if @core_empresa.status == TRUE
     	@core_empresa.status = FALSE
     	flash[:success] = "O status da empresa mudou para #{@core_empresa.status}"
+    	@core_empresa.save
     	redirect_to core_empresas_path
     else
     	@core_empresa.status = TRUE
     	flash[:success] = "O status da empresa mudou para #{@core_empresa.status}"
+    	@core_empresa.save
     	redirect_to core_empresas_path
     end
     

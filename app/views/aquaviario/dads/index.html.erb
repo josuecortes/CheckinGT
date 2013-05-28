@@ -41,7 +41,7 @@
 		
 		<td><%= aquaviario_dad.porto_origem %></td>
 		
-		<td><%= %></td>
+		<td><%= aquaviario_dad.unidade_cargas.size %></td>
 		
 		<td><%= aquaviario_dad.porto_destino.descricao %></td>
 		
@@ -53,6 +53,7 @@
 		
 		<td><%= aquaviario_dad.status_processamento.descricao %></td>
 		
+		<td><%= link_to "Unidade de Carga (#{aquaviario_dad.unidade_cargas.size})", aquaviario_dad_unidade_cargas_path(aquaviario_dad), :class=>"btn btn-success" %> </td>
 		<td><%= link_to 'Mostrar', aquaviario_dad, :class=>"btn btn-small"%></td>
 		<td><%= link_to 'Editar', edit_aquaviario_dad_path(aquaviario_dad), :class=>"btn btn-primary btn-small" %></td>
 		<td><%= link_to 'Apagar', aquaviario_dad, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
@@ -61,6 +62,11 @@
 </table>
 
 <br />
+<div class="pagination pagination-centered">
+	<%= will_paginate @aquaviario_dads, :previous_label => '<<', :next_label => '>>' %>
+</div>
+<br />
 
 <%= link_to 'Novo(a) Dad', new_aquaviario_dad_path, :class=>"btn btn-success" %>
+
 
