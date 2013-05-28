@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dad_id: 1
+  unidade_carga_id: 1
+  fisco_cpf_id: 1
+  termo_lacre_data: 2013-05-27 10:13:51
+  termo_lacre_numero: MyString
+  observacoes: MyString
+
+two:
+  dad_id: 1
+  unidade_carga_id: 1
+  fisco_cpf_id: 1
+  termo_lacre_data: 2013-05-27 10:13:51
+  termo_lacre_numero: MyString
+  observacoes: MyString

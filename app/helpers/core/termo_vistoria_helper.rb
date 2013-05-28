@@ -1,0 +1,2 @@
+module Core::TermoVistoriaHelper
+end

@@ -1,0 +1,126 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_dads_path %> | Exibindo DAD</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @aquaviario_dad.empresa.cnpj %>
+</p>
+
+
+<p>
+	<strong>Porto origem:</strong>
+	<%= @aquaviario_dad.porto_origem %>
+</p>
+
+
+<p>
+	<strong>Porto destino:</strong>
+	<%= @aquaviario_dad.porto_destino.descricao %>
+</p>
+
+
+<p>
+	<strong>Empurrador:</strong>
+	<%= @aquaviario_dad.empurrador %>
+</p>
+
+
+<p>
+	<strong>Balsa:</strong>
+	<%= @aquaviario_dad.balsa %>
+</p>
+
+
+<p>
+	<strong>Previsao chegada:</strong>
+	<%= @aquaviario_dad.previsao_chegada.to_s_br %>
+</p>
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @aquaviario_dad.usuario_id %>
+</p>
+
+
+<p>
+	<strong>Usuario alterou:</strong>
+	<%= @aquaviario_dad.usuario_alterou_id %>
+</p>
+
+<h4>Unidades de Carga</h4>
+
+
+<% @aquaviario_dad.unidade_cargas.each do |aquaviario_unidade_carga| %>
+
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+		
+			<tr>
+						
+				<th>Identificação</th>
+			
+				<th>Tipo unidade de carga</th>
+			
+				<th>QDTE documentos eletronicos</th>
+			
+				<th>Criado Por</th>
+									
+			</tr>
+		</thead>
+
+		<tbody>
+		
+			<tr>
+		
+				<td><%= aquaviario_unidade_carga.placa %></td>
+		
+				<td><%= aquaviario_unidade_carga.tipo_unidade.descricao %></td>
+		
+				<td><%= aquaviario_unidade_carga.documento_eletronicos.size %></td>
+		
+				<td><%= aquaviario_unidade_carga.usuario.nome %> - <%= aquaviario_unidade_carga.created_at.to_s_br %></td>
+						
+			</tr>	
+		</tbody>
+		
+		<tr><td colspan="4"><h5><center>Documentos da Unidade <%= aquaviario_unidade_carga.placa %></center></h5></td></tr>
+		
+		
+		<table class="table table-bordered table-striped table-hover">		
+			<thead>
+				<tr>
+						
+					<th>Tipo documento eletronico</th>
+			
+					<th>Documento</th>
+			
+					<th colspan="2">Transportador Rodoviario</th>
+										
+				</tr>
+			</thead>
+
+			<tbody>
+				<% aquaviario_unidade_carga.documento_eletronicos.each do |aquaviario_documento_eletronico| %>
+				<tr>
+				
+					<td><%= aquaviario_documento_eletronico.tipo_documento_eletronico.descricao %></td>
+		
+					<td><%= aquaviario_documento_eletronico.documento %></td>
+		
+					<td colspan="2"><%= aquaviario_documento_eletronico.rodoviario_id %></td>
+						
+				<tr>
+				<% end %>
+			</tbody>
+		</table>	
+		
+		
+	</table>
+
+<% end %>
+
+<%= link_to 'Editar', edit_aquaviario_dad_path(@aquaviario_dad) %> |
+<%= link_to 'Voltar', aquaviario_dads_path %>
+

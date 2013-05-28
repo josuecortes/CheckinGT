@@ -1,0 +1,44 @@
+<div class="page-header">
+	<h3>Lista de core_termo_vistoria_detalhes</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Termo vistoria</th>
+			
+			<th>Termo vistoria tipo detalhe</th>
+			
+			<th>Valor devido</th>
+			
+			<th>Observacoes</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_termo_vistoria_detalhes) do |core_termo_vistoria_detalhe| %>
+		
+		<td><%= core_termo_vistoria_detalhe.termo_vistoria_id %></td>
+		
+		<td><%= core_termo_vistoria_detalhe.termo_vistoria_tipo_detalhe_id %></td>
+		
+		<td><%= core_termo_vistoria_detalhe.valor_devido %></td>
+		
+		<td><%= core_termo_vistoria_detalhe.observacoes %></td>
+		
+		<td><%= link_to 'Mostrar', core_termo_vistoria_detalhe, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_termo_vistoria_detalhe_path(core_termo_vistoria_detalhe), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_termo_vistoria_detalhe, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Termo vistoria detalhe', new_core_termo_vistoria_detalhe_path, :class=>"btn btn-success" %>
+

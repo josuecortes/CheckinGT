@@ -1,0 +1,57 @@
+<div class="page-header">
+	<h3> <%= link_to "Voltar", aquaviario_dads_path %> | Lista de Unidades de carga <%= @dad.id %> </h3>
+</div>
+
+<table class="table " align="center">
+	<thead>
+		<tr><th>Unidades de Carga: </th></tr>
+		<tr><th>Transportador Aquaviario: </th></tr>
+		<tr><th>Documento auxiliar de desembaraço: <%= @dad.id %></th></tr>
+		<tr><th>Empurrador: <%= @dad.empurrador %>	Balsa: <%= @dad.balsa %></th></tr>
+	</thead>
+</table>
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		
+		<tr>
+			
+			
+			<th>Identificação</th>
+			
+			<th>Tipo unidade de carga</th>
+			
+			<th>QDTE documentos eletronicos</th>
+			
+			<th>Criado Por</th>
+						
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @auc) do |aquaviario_unidade_carga| %>
+		
+		<td><%= aquaviario_unidade_carga.placa %></td>
+		
+		<td><%= aquaviario_unidade_carga.tipo_unidade.descricao %></td>
+		
+		<td><%= aquaviario_unidade_carga.documento_eletronicos.size %></td>
+		
+		<td><%= aquaviario_unidade_carga.usuario.nome %> - <%= aquaviario_unidade_carga.created_at.to_s_br %></td>
+			
+		<td><%= link_to 'Mostrar', aquaviario_dad_unidade_carga_path(@dad, aquaviario_unidade_carga), :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_aquaviario_dad_unidade_carga_path(@dad, aquaviario_unidade_carga), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', aquaviario_dad_unidade_carga_path(@dad, aquaviario_unidade_carga), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<td><%= link_to "Documento Eletronico #{aquaviario_unidade_carga.documento_eletronicos.size}", aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, aquaviario_unidade_carga), :class=>"btn btn-success btn-small" %></td>
+		
+		
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Unidade carga',  new_aquaviario_dad_unidade_carga_path(@dad), :class=>"btn btn-success" %>
+

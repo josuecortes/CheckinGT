@@ -1,0 +1,40 @@
+<div class="page-header">
+	<h3>Lista de core_fiel_depositarios</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Empresa</th>
+			
+			<th>Cpf</th>
+			
+			<th>Nome</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_fiel_depositarios) do |core_fiel_depositario| %>
+		
+		<td><%= core_fiel_depositario.empresa_id %></td>
+		
+		<td><%= core_fiel_depositario.cpf %></td>
+		
+		<td><%= core_fiel_depositario.nome %></td>
+		
+		<td><%= link_to 'Mostrar', core_fiel_depositario, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_fiel_depositario_path(core_fiel_depositario), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_fiel_depositario, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Fiel depositario', new_core_fiel_depositario_path, :class=>"btn btn-success" %>
+

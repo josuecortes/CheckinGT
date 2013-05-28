@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  termo_vistoria_id: 1
+  termo_vistoria_tipo_detalhe_id: 1
+  valor_devido: 
+  observacoes: MyText
+
+two:
+  termo_vistoria_id: 1
+  termo_vistoria_tipo_detalhe_id: 1
+  valor_devido: 
+  observacoes: MyText

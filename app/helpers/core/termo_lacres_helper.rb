@@ -1,0 +1,2 @@
+module Core::TermoLacresHelper
+end

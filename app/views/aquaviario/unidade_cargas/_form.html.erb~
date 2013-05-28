@@ -1,0 +1,180 @@
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@aquaviario_dad_unidade_carga, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @aquaviario_unidade_carga.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@aquaviario_unidade_carga.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @aquaviario_unidade_carga.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		
+		<div class="control-group">
+			<%= f.label :dad_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :dad_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :tipo_unidade_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :tipo_unidade_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :placa, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :placa, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :termo_lacre_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :termo_lacre_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :termo_vistoria_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :termo_vistoria_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :termo_fiel_depositario_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :termo_fiel_depositario_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :termo_fiel_depositario_data, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :termo_fiel_depositario_data, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status_unidade_carga_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :status_unidade_carga_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status_unidade_carga_data, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :status_unidade_carga_data, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status_processamento_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :status_processamento_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status_processamento_data, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :status_processamento_data, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status_desembaraco_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :status_desembaraco_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status_desembaraco_data, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :status_desembaraco_data, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :usuario_alterou_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :usuario_alterou_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :usuario_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :usuario_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

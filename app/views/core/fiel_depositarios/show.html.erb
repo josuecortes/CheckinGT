@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h3>Exibindo core_fiel_depositario</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @core_fiel_depositario.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Cpf:</strong>
+	<%= @core_fiel_depositario.cpf %>
+</p>
+
+
+<p>
+	<strong>Nome:</strong>
+	<%= @core_fiel_depositario.nome %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_fiel_depositario_path(@core_fiel_depositario) %> |
+<%= link_to 'Voltar', core_fiel_depositarios_path %>
+

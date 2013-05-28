@@ -1,0 +1,40 @@
+<div class="page-header">
+	<h3>Lista de core_selo_fiscals</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Status selo fiscal tipo</th>
+			
+			<th>Selo fiscal data</th>
+			
+			<th>Descricao</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_selo_fiscals) do |core_selo_fiscal| %>
+		
+		<td><%= core_selo_fiscal.status_selo_fiscal_tipo_id %></td>
+		
+		<td><%= core_selo_fiscal.selo_fiscal_data %></td>
+		
+		<td><%= core_selo_fiscal.descricao %></td>
+		
+		<td><%= link_to 'Mostrar', core_selo_fiscal, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_selo_fiscal_path(core_selo_fiscal), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_selo_fiscal, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Selo fiscal', new_core_selo_fiscal_path, :class=>"btn btn-success" %>
+

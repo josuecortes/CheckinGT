@@ -1,0 +1,68 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad) %> | Exibindo Unidade de Carga</h3>
+</div>
+
+
+<p>
+	<strong>Dad:</strong>
+	<%= @aquaviario_unidade_carga.dad_id %>
+</p>
+
+
+<p>
+	<strong>Tipo unidade:</strong>
+	<%= @aquaviario_unidade_carga.tipo_unidade.descricao %>
+</p>
+
+
+<p>
+	<strong>Placa tem q trocar:</strong>
+	<%= @aquaviario_unidade_carga.placa %>
+</p>
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @aquaviario_unidade_carga.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @aquaviario_unidade_carga.created_at.to_s_br %>
+</p>
+
+
+<p>
+	<strong>Usuario alterou:</strong>
+	<%= @aquaviario_unidade_carga.usuario_alterou_id %>
+	<strong>Em:</strong>
+	<%= @aquaviario_unidade_carga.updated_at.to_s_br %>
+</p>
+
+<h4>Documentos da Unidade</h4>
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+						
+			<th>Tipo documento eletronico</th>
+			
+			<th>Documento</th>
+			
+			<th>Transportador Rodoviario</th>
+						
+		</tr>
+	</thead>
+
+	<tbody>
+			
+		<%= content_tag_for(:tr, @aquaviario_unidade_carga.documento_eletronicos) do |aquaviario_documento_eletronico| %>
+				
+		<td><%= aquaviario_documento_eletronico.tipo_documento_eletronico.descricao %></td>
+		
+		<td><%= aquaviario_documento_eletronico.documento %></td>
+		
+		<td><%= aquaviario_documento_eletronico.rodoviario_id %></td>
+				
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'Editar', edit_aquaviario_dad_unidade_carga_path(@dad, @aquaviario_unidade_carga) %> |
+<%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad) %>
+

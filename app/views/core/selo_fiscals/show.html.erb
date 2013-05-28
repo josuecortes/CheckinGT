@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h3>Exibindo core_selo_fiscal</h3>
+</div>
+
+
+<p>
+	<strong>Status selo fiscal tipo:</strong>
+	<%= @core_selo_fiscal.status_selo_fiscal_tipo_id %>
+</p>
+
+
+<p>
+	<strong>Selo fiscal data:</strong>
+	<%= @core_selo_fiscal.selo_fiscal_data %>
+</p>
+
+
+<p>
+	<strong>Descricao:</strong>
+	<%= @core_selo_fiscal.descricao %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_selo_fiscal_path(@core_selo_fiscal) %> |
+<%= link_to 'Voltar', core_selo_fiscals_path %>
+

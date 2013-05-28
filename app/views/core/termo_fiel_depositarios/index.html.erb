@@ -1,0 +1,72 @@
+<div class="page-header">
+	<h3>Lista de core_termo_fiel_depositarios</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Rodoviario</th>
+			
+			<th>Rodoviario usuario</th>
+			
+			<th>Rodoviario data autorizacao</th>
+			
+			<th>Fisco usuario</th>
+			
+			<th>Fisco data autorizacao</th>
+			
+			<th>Porto usuario</th>
+			
+			<th>Porto data autorizacao</th>
+			
+			<th>Status termo fiel depositario</th>
+			
+			<th>Fisco fechamento usuario</th>
+			
+			<th>Fechamento descricao</th>
+			
+			<th>Fechamento data</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_termo_fiel_depositarios) do |core_termo_fiel_depositario| %>
+		
+		<td><%= core_termo_fiel_depositario.rodoviario_id %></td>
+		
+		<td><%= core_termo_fiel_depositario.rodoviario_usuario_id %></td>
+		
+		<td><%= core_termo_fiel_depositario.rodoviario_data_autorizacao %></td>
+		
+		<td><%= core_termo_fiel_depositario.fisco_usuario_id %></td>
+		
+		<td><%= core_termo_fiel_depositario.fisco_data_autorizacao %></td>
+		
+		<td><%= core_termo_fiel_depositario.porto_usuario_id %></td>
+		
+		<td><%= core_termo_fiel_depositario.porto_data_autorizacao %></td>
+		
+		<td><%= core_termo_fiel_depositario.status_termo_fiel_depositario_id %></td>
+		
+		<td><%= core_termo_fiel_depositario.fisco_fechamento_usuario_id %></td>
+		
+		<td><%= core_termo_fiel_depositario.fechamento_descricao %></td>
+		
+		<td><%= core_termo_fiel_depositario.fechamento_data %></td>
+		
+		<td><%= link_to 'Mostrar', core_termo_fiel_depositario, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_termo_fiel_depositario_path(core_termo_fiel_depositario), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_termo_fiel_depositario, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Termo fiel depositario', new_core_termo_fiel_depositario_path, :class=>"btn btn-success" %>
+

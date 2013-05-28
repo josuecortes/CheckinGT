@@ -1,0 +1,2 @@
+module Core::RodoviariosHelper
+end

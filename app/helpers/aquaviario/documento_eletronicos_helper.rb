@@ -1,0 +1,2 @@
+module Aquaviario::DocumentoEletronicosHelper
+end

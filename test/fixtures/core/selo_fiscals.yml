@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status_selo_fiscal_tipo_id: 1
+  selo_fiscal_data: 2013-05-27 09:55:18
+  descricao: MyString
+
+two:
+  status_selo_fiscal_tipo_id: 1
+  selo_fiscal_data: 2013-05-27 09:55:18
+  descricao: MyString

@@ -1,0 +1,2 @@
+module Core::TipoDocumentoEletronicosHelper
+end

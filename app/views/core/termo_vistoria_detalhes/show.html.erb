@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h3>Exibindo core_termo_vistoria_detalhe</h3>
+</div>
+
+
+<p>
+	<strong>Termo vistoria:</strong>
+	<%= @core_termo_vistoria_detalhe.termo_vistoria_id %>
+</p>
+
+
+<p>
+	<strong>Termo vistoria tipo detalhe:</strong>
+	<%= @core_termo_vistoria_detalhe.termo_vistoria_tipo_detalhe_id %>
+</p>
+
+
+<p>
+	<strong>Valor devido:</strong>
+	<%= @core_termo_vistoria_detalhe.valor_devido %>
+</p>
+
+
+<p>
+	<strong>Observacoes:</strong>
+	<%= @core_termo_vistoria_detalhe.observacoes %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_termo_vistoria_detalhe_path(@core_termo_vistoria_detalhe) %> |
+<%= link_to 'Voltar', core_termo_vistoria_detalhes_path %>
+

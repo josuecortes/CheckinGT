@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dad_id: 1
+  tipo_unidade_id: 1
+  placa: MyString
+  termo_lacre_id: 1
+  termo_vistoria_id: 1
+  termo_fiel_depositario_id: 1
+  termo_fiel_depositario_data: 1
+  status_unidade_carga_id: 1
+  status_unidade_carga_data: 2013-05-27 11:40:55
+  status_processamento_id: 1
+  status_processamento_data: 2013-05-27 11:40:55
+  status_desembaraco_id: 1
+  status_desembaraco_data: 2013-05-27 11:40:55
+  usuario_alterou_id: 1
+  usuario_id: 1
+
+two:
+  dad_id: 1
+  tipo_unidade_id: 1
+  placa: MyString
+  termo_lacre_id: 1
+  termo_vistoria_id: 1
+  termo_fiel_depositario_id: 1
+  termo_fiel_depositario_data: 1
+  status_unidade_carga_id: 1
+  status_unidade_carga_data: 2013-05-27 11:40:55
+  status_processamento_id: 1
+  status_processamento_data: 2013-05-27 11:40:55
+  status_desembaraco_id: 1
+  status_desembaraco_data: 2013-05-27 11:40:55
+  usuario_alterou_id: 1
+  usuario_id: 1
