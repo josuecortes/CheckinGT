@@ -1,0 +1,51 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad)  %> | Lista de Documento(s) Eletronico(s) da <%= @uc.placa %></h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr><td><strong>Transportador Aquaviario:</strong> <%= @dad.empresa.nome_fantasia %></td></tr>
+		<tr><td><strong>D.A.D. Numero: </strong> <%= @dad.id %>  <strong>Status: </strong><%= @dad.status_dad.descricao %></td></tr>
+		<tr><td><strong>Empurrador:</strong> <%= @dad.empurrador %> <strong>Balsa:</strong> <%= @dad.balsa %></td></tr>
+		<tr><td><strong>Unidade de Carga:</strong> <%= @uc.id %> <strong>Tipo:</strong> <%= @uc.tipo_unidade.descricao %></td></tr>
+						
+		</tr>
+	</thead>
+</table>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+						
+			<th>Tipo documento eletronico</th>
+			
+			<th>Documento</th>
+			
+			<th>Transportador Rodoviario</th>
+					
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @aquaviario_documento_eletronicos) do |aquaviario_documento_eletronico| %>
+				
+		<td><%= aquaviario_documento_eletronico.tipo_dc.descricao %></td>
+		
+		<td><%= aquaviario_documento_eletronico.documento %></td>
+		
+		<td><%= aquaviario_documento_eletronico.rodoviario.empresa.nome_fantasia %></td>
+		
+		<td><%= link_to 'Mostrar', aquaviario_dad_unidade_carga_dc_path(@dad, @uc, aquaviario_documento_eletronico), :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_aquaviario_dad_unidade_carga_dc_path(@dad, @uc, aquaviario_documento_eletronico), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', aquaviario_dad_unidade_carga_dc_path(@dad, @uc, aquaviario_documento_eletronico), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+<% if @dad.status_dad != 10003 %>
+	<%= link_to 'Novo Documento Eletronico', new_aquaviario_dad_unidade_carga_dc_path(@dad, @uc), :class=>"btn btn-success" %>
+<% end %>		
+	
+

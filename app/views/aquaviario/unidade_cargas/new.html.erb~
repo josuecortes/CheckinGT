@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad) %> | Novo(a) aquaviario_unidade_carga</h3>
+	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad) %> | Nova Unidade de Carga<%= @dad.id %></h3>
 </div>
 
 <div class="row">
@@ -22,12 +22,18 @@
 		<% end %>
 		
 		<%= f.hidden_field :dad_id, :value=>@dad.id %>
-		<%= f.hidden_field :usuario_id, :value=>@dad.id %>
-				
+		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>
+		<%= f.hidden_field :status_unidade_carga_id, :value=>10000 %>
+		<%= f.hidden_field :status_unidade_carga_data, :value=>DateTime.now %>
+		<%= f.hidden_field :status_processamento_id, :value=>10000 %>
+		<%= f.hidden_field :porto_destino_id, :value=>@dad.porto_destino_id %>
+		<%= f.hidden_field :stauts_desembaraco_id, :value=>10000 %>
+		<%= f.hidden_field :stauts_parametrizacao_id, :value=>10000 %>
+								
 		<div class="control-group">
 			<%= f.label :placa, "Identificacão Unidade de Carga", :class=>"control-label" %>
 			<div class="controls">
-				<%= f.number_field :placa, :class=>"input-xlarge" %>
+				<%= f.text_field :placa, :class=>"input-xlarge" %>
 				<p class="help-block">
 					
 				</p>

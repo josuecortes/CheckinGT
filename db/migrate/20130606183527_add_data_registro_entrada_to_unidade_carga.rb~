@@ -1,0 +1,6 @@
+class AddDataRegistroEntradaToUnidadeCarga < ActiveRecord::Migration
+  def change
+    add_column :unidade_cargas, :data_registro_entrada, :string
+    add_column :unidade_cargas, :datetime, :string
+  end
+end

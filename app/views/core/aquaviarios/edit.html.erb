@@ -1,8 +1,56 @@
 <div class="page-header">
-	<h3>Editando core_aquaviario</h3>
+	<h3> <%= link_to 'Voltar', core_empresa_aquaviarios_path(@empresa) %> | Editando Empresa Aquaviaria</h3>
 </div>
 
-<%= render 'form' %>
+<div class="row">
+	<div class="span10 offset1">
 
-<%= link_to 'Voltar', core_aquaviarios_path %>
+		<%= form_for(@core_aquaviario, :url=> core_empresa_aquaviario_path(@empresa, @core_aquaviario), :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @core_aquaviario.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_aquaviario.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @core_aquaviario.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		
+		<div class="control-group">
+			<%= f.label :registro_antaq, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :registro_antaq, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.check_box :status, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>
+
+<%= link_to 'Voltar', core_empresa_aquaviarios_path(@empresa) %>
 

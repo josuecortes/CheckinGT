@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h3>Lista de core_tipo_dcs</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Descricao</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_tipo_dcs) do |core_tipo_dc| %>
+		
+		<td><%= core_tipo_dc.descricao %></td>
+		
+		<td><%= link_to 'Mostrar', core_tipo_dc, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_tipo_dc_path(core_tipo_dc), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_tipo_dc, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Tipo dc', new_core_tipo_dc_path, :class=>"btn btn-success" %>
+

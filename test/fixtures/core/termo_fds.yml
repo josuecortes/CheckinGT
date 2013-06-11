@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rodoviario_id: 1
+  rodoviario_usuario_id: 1
+  rodoviario_data_autorizacao: 2013-06-04 09:22:29
+  fisco_usuario_id: 1
+  fisco_data_autorizacao: 2013-06-04 09:22:29
+  porto_usuario_id: 1
+  porto_data_autorizacao: 2013-06-04 09:22:29
+  status_termo_fiel_depositario_id: 1
+  fisco_fechamento_usuario_id: 1
+  fechamento_descricao: MyText
+  fechamento_data: 2013-06-04 09:22:29
+
+two:
+  rodoviario_id: 1
+  rodoviario_usuario_id: 1
+  rodoviario_data_autorizacao: 2013-06-04 09:22:29
+  fisco_usuario_id: 1
+  fisco_data_autorizacao: 2013-06-04 09:22:29
+  porto_usuario_id: 1
+  porto_data_autorizacao: 2013-06-04 09:22:29
+  status_termo_fiel_depositario_id: 1
+  fisco_fechamento_usuario_id: 1
+  fechamento_descricao: MyText
+  fechamento_data: 2013-06-04 09:22:29

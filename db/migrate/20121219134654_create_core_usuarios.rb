@@ -20,6 +20,6 @@ class CreateCoreUsuarios < ActiveRecord::Migration
 
       t.timestamps 
     end
-
+		
   end
 end

@@ -1,0 +1,86 @@
+<div class="page-header">
+	<h3><%= link_to "Voltar", porto_unidade_cargas_path %> | Solicitar Saída da Unidade <%= @auc.placa %></h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		
+		<tr>
+			
+			<th>DAD</th>
+			<td width="75%" ><%= @auc.dad.id %></td>
+		
+		<tr>	
+			
+			<th>Transp Aquaviario</th>
+			<td><%= @auc.dad.empresa.nome_fantasia %></td>
+			
+		</tr>	
+		<tr>
+			
+			<th>Empurrador</th>
+			<td><%= @auc.dad.empurrador %></td>
+			
+		</tr>
+		<tr>
+			
+			<th>Balsa</th>
+			<td><%= @auc.dad.balsa %></td>
+			
+		</tr>
+		<tr>
+			
+			<th>Data registro entrada</th>
+			<td><%= @auc.data_registro_entrada %></td>
+			
+		</tr>
+		<tr>
+			
+			<th>Tipo unidade de carga</th>
+			<td><%= @auc.tipo_unidade.descricao %></td>
+		
+		</tr>
+		<tr>
+			
+			<th>Status parametrização</th>
+			<td><%= @auc.status_parametrizacao.descricao %></td>
+			
+		</tr>
+		<tr>
+			
+			<th>Data parametrização	</th>
+			<td><%= @auc.status_parametrizacao_data %></td>
+						
+		</tr>
+		
+		</tr>
+		
+		<tr>
+			
+			<th>Status desembaraço	</th>
+			<td><%= @auc.status_desembaraco.descricao %></td>
+						
+		</tr>
+			
+		<tr>
+			
+			<th>Data desembaraço	</th>
+			<td><%= @auc.status_desembaraco_data %></td>
+						
+		</tr>
+		
+		<tr>
+			
+			<td colspan="2"> <%= link_to "Solicitar saida", edit_porto_unidade_carga_solicitar_saida_path(@auc, @auc.id), :class=>"btn btn-primary" %> </td>
+			
+						
+		</tr>
+				
+			
+	</thead>
+	
+</table>
+
+<br />
+
+

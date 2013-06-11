@@ -1,0 +1,2 @@
+module Core::StatusTermoFdsHelper
+end

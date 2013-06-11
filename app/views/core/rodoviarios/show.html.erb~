@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h3> <%= link_to 'Voltar', core_empresa_rodoviarios_path(@empresa, @core_rodoviario) %> | Exibindo Empresa Rodoviaria</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @core_rodoviario.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Registro antt:</strong>
+	<%= @core_rodoviario.registro_antt %>
+</p>
+
+
+<p>
+	<strong>Status:</strong>
+	<%= @core_rodoviario.status %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_rodoviario_path(@empresa, @core_rodoviario) %> |
+<%= link_to 'Voltar', core_empresa_rodoviarios_path(@empresa, @core_rodoviario) %>
+

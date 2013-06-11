@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h3>Exibindo core_patio_porto</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @core_patio_porto.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Descricao:</strong>
+	<%= @core_patio_porto.descricao %>
+</p>
+
+
+<p>
+	<strong>Endereco:</strong>
+	<%= @core_patio_porto.endereco %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_patio_porto_path(@core_patio_porto) %> |
+<%= link_to 'Voltar', core_patio_portos_path %>
+

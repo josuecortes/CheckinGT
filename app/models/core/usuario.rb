@@ -20,6 +20,7 @@ class Core::Usuario < ActiveRecord::Base
   has_many :modulos, :through=>:sistemas, :class_name=>"Core::Modulo"
   has_many :dads, :class_name=>"Aquaviario::Dad"
   has_many :unidade_cargas, :class_name=>"Aquaviario::UnidadeCarga"
+  has_many :dcs, :class_name=>"Aquaviario::Dc"
 
   #validações
   validates_presence_of :cpf	

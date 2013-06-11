@@ -18,7 +18,7 @@ class CreateCoreUsuarios < ActiveRecord::Migration
       t.string :cpf
       t.boolean :master
 
-      t.timestamps
+      t.timestamps 
     end
 
   end

@@ -9,7 +9,7 @@ class Aquaviario::DocumentoEletronicosController < ApplicationController
   def show
     @dad = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).find(params[:dad_id])
     @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
-    @aquaviario_documento_eletronicos = @uc.documento_eletronicos.find(params[:id])
+    @aquaviario_documento_eletronico = @uc.documento_eletronicos.find(params[:id])
   end
 
   def new
@@ -26,42 +26,68 @@ class Aquaviario::DocumentoEletronicosController < ApplicationController
   end
 
   def create
-    @dad = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).find(params[:dad_id])
-    @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
-    @aquaviario_documento_eletronico = Aquaviario::DocumentoEletronico.new(params[:aquaviario_documento_eletronico])
+   	@dad = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).find(params[:dad_id])
+    if @dad.status_dad_id == 4
+  		flash[:error] = "Este DAD esta registrado e nao pode ser retificado"
+  		redirect_to aquaviario_dads_path
+  	else
+		  @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
+		  @aquaviario_documento_eletronico = Aquaviario::DocumentoEletronico.new(params[:aquaviario_documento_eletronico])
 
-    if @aquaviario_documento_eletronico.save
-    	flash[:success] = "Salvo com Sucesso"
-    	redirect_to aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, @uc)
-    else
-    	flash[:error] = "Erro ao Salvar"
-    	render action: "new"
-    end
+		  if @aquaviario_documento_eletronico.save
+		  	if @dad.status_dad_id == 2
+		    	@dad.retificar_tudo	
+		    end
+		  	flash[:success] = "Salvo com Sucesso"
+		  	redirect_to aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, @uc)
+		  else
+		  	flash[:error] = "Erro ao Salvar"
+		  	render action: "new"
+		  end
+  	end
   end
 
   def update
     @dad = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).find(params[:dad_id])
-    @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
-    @aquaviario_documento_eletronico = @uc.documento_eletronicos.find(params[:id])
-        
-    if @aquaviario_documento_eletronico.update_attributes(params[:aquaviario_documento_eletronico])
-    	flash[:success] = "Atualizado com Sucesso"
-    	redirect_to aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, @uc)
-    else
-    	flash[:error] = "Erro ao Atualizar"
-    	render action: "edit"    
-    end
+    if @dad.status_dad_id == 4
+  		flash[:error] = "Este DAD esta registrado e nao pode ser retificado"
+  		redirect_to aquaviario_dads_path
+  	else
+		  @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
+		  @aquaviario_documento_eletronico = @uc.documento_eletronicos.find(params[:id])
+		      
+		  if @aquaviario_documento_eletronico.update_attributes(params[:aquaviario_documento_eletronico])
+		  	if @dad.status_dad_id == 2
+		    	@dad.retificar_tudo	
+		    end
+		  	flash[:success] = "Atualizado com Sucesso"
+		  	redirect_to aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, @uc)
+		  else
+		  	flash[:error] = "Erro ao Atualizar"
+		  	render action: "edit"    
+		  end
+		end
   end
   
   def destroy
     @dad = Aquaviario::Dad.da_empresa(@usuario_logado.empresa_id).find(params[:dad_id])
-    @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
-    @aquaviario_documento_eletronicos = @uc.documento_eletronicos.find(params[:id])
-        
-    if @aquaviario_documento_eletronico.destroy
-		
-		else
-		
+    if @dad.status_dad_id == 4
+  		flash[:error] = "Este DAD esta registrado e nao pode ser retificado"
+  		redirect_to aquaviario_dads_path
+  	else
+		  @uc = @dad.unidade_cargas.find(params[:unidade_carga_id])
+		  @aquaviario_documento_eletronicos = @uc.documento_eletronicos.find(params[:id])
+		      
+		  if @aquaviario_documento_eletronico.destroy
+				if @dad.status_dad_id == 2
+		    	@dad.retificar_tudo	
+		    end			
+				flash[:success] = "Apagado com Sucesso"
+				redirect_to aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, @uc)
+			else
+				flash[:error] = "Erro ao Apagar"
+				redirect_to aquaviario_dad_unidade_carga_documento_eletronicos_path(@dad, @uc)
+			end
 		end
   end
 end

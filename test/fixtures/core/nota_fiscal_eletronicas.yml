@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dad_id: 1
+  unidade_carga: 1
+  tipo_documento_eletronico_id: 1
+  documento_eletronico_id: 1
+  rodoviario_id: 1
+  termo_fiel_depositario_id: 1
+  selo_fiscal_id: 1
+  termo_lacre_id: 1
+  termo_vistoria: 1
+  emitente_cnpj: MyString
+  emitente_razao: MyString
+  destinatario_cnpj: MyString
+  destinatario_razao: MyString
+  destinatario_cpf: MyString
+  destinatario_nome: MyString
+  nota_numero: MyString
+  nota_serie: MyString
+  nota_quantidade_itens: 1
+  valor_nota: 1
+  valor_icms: 1
+  valor_produtos: 1
+  valor_icms_st: 1
+  data_emissao: 2013-05-29 10:28:23
+  data_registro: 2013-05-29 10:28:23
+  memoria_calculo: MyText
+  status_desembaraco_id: 1
+  status_desembaraco_data: 2013-05-29 10:28:23
+  usuario_id: 1
+  usuario_alterou_id: 1
+
+two:
+  dad_id: 1
+  unidade_carga: 1
+  tipo_documento_eletronico_id: 1
+  documento_eletronico_id: 1
+  rodoviario_id: 1
+  termo_fiel_depositario_id: 1
+  selo_fiscal_id: 1
+  termo_lacre_id: 1
+  termo_vistoria: 1
+  emitente_cnpj: MyString
+  emitente_razao: MyString
+  destinatario_cnpj: MyString
+  destinatario_razao: MyString
+  destinatario_cpf: MyString
+  destinatario_nome: MyString
+  nota_numero: MyString
+  nota_serie: MyString
+  nota_quantidade_itens: 1
+  valor_nota: 1
+  valor_icms: 1
+  valor_produtos: 1
+  valor_icms_st: 1
+  data_emissao: 2013-05-29 10:28:23
+  data_registro: 2013-05-29 10:28:23
+  memoria_calculo: MyText
+  status_desembaraco_id: 1
+  status_desembaraco_data: 2013-05-29 10:28:23
+  usuario_id: 1
+  usuario_alterou_id: 1

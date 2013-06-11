@@ -1,0 +1,128 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', porto_registro_entradas_path %> | Exibindo D.A.D. Numero <%= @aquaviario_dad.id %></h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @aquaviario_dad.empresa.cnpj %>
+</p>
+
+
+<p>
+	<strong>Porto origem:</strong>
+	<%= @aquaviario_dad.porto_origem %>
+</p>
+
+
+<p>
+	<strong>Porto destino:</strong>
+	<%= @aquaviario_dad.porto_destino.descricao %>
+</p>
+
+
+<p>
+	<strong>Empurrador:</strong>
+	<%= @aquaviario_dad.empurrador %>
+</p>
+
+
+<p>
+	<strong>Balsa:</strong>
+	<%= @aquaviario_dad.balsa %>
+</p>
+
+
+<p>
+	<strong>Previsao chegada:</strong>
+	<%= @aquaviario_dad.previsao_chegada.to_s_br %>
+</p>
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @aquaviario_dad.usuario.nome %>
+	<strong>Em: </strong><%= @aquaviario_dad.created_at.to_s_br %>
+</p>
+
+<% if @aquaviario_dad.usuario_alterou_id != nil %>
+	<p>
+		<strong>Usuario alterou:</strong>
+		<%= @aquaviario_dad.usuario_alterou.nome %>
+		<strong>Em: </strong><%= @aquaviario_dad.updated_at.to_s_br %>
+	</p>
+<% end %>
+
+<h4>Unidades de Carga</h4>
+
+
+<% @aquaviario_dad.unidade_cargas.each do |aquaviario_unidade_carga| %>
+
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+		
+			<tr>
+						
+				<th>Identificação</th>
+			
+				<th>Tipo unidade de carga</th>
+			
+				<th>QDTE documentos eletronicos</th>
+			
+				<th>Criado Por</th>
+									
+			</tr>
+		</thead>
+
+		<tbody>
+		
+			<tr>
+		
+				<td><%= aquaviario_unidade_carga.placa %></td>
+		
+				<td><%= aquaviario_unidade_carga.tipo_unidade.descricao %></td>
+		
+				<td><%= aquaviario_unidade_carga.dcs.size %></td>
+		
+				<td><%= aquaviario_unidade_carga.usuario.nome %> - <%= aquaviario_unidade_carga.created_at.to_s_br %></td>
+						
+			</tr>	
+		</tbody>
+		
+		<tr><td colspan="4"><h5><center>Documentos da Unidade <%= aquaviario_unidade_carga.placa %></center></h5></td></tr>
+		
+		
+		
+			<thead>
+				<tr>
+						
+					<th>Tipo documento eletronico</th>
+			
+					<th>Documento</th>
+			
+					<th colspan="2">Transportador Rodoviario</th>
+										
+				</tr>
+			</thead>
+
+			<tbody>
+				<% aquaviario_unidade_carga.dcs.each do |aquaviario_documento_eletronico| %>
+				<tr>
+				
+					<td><%= aquaviario_documento_eletronico.tipo_dc.descricao %></td>
+		
+					<td><%= aquaviario_documento_eletronico.documento %></td>
+		
+					<td colspan="2"><%= aquaviario_documento_eletronico.rodoviario.empresa.nome_fantasia %></td>
+						
+				<tr>
+				<% end %>
+			</tbody>
+			
+		
+		
+	</table>
+
+<% end %>
+
+<%= link_to 'Voltar', porto_registro_entradas_path %>
+

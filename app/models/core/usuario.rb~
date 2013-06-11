@@ -19,7 +19,7 @@ class Core::Usuario < ActiveRecord::Base
   has_many :sistemas, :through=>:grupos, :class_name=>"Core::Sistema"
   has_many :modulos, :through=>:sistemas, :class_name=>"Core::Modulo"
   has_many :dads, :class_name=>"Aquaviario::Dad"
-  has_many :unidade_cargas, :class_name=>"Aquaviario::UnidadeCargas"
+  has_many :unidade_cargas, :class_name=>"Aquaviario::UnidadeCarga"
 
   #validações
   validates_presence_of :cpf	

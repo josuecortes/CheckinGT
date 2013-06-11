@@ -37,8 +37,8 @@
 									            <% if s.modulo_id == m.id and (s.url != nil and s.url != "") %>
 									            <li>
 										            <%= 
-										            	#link_to s.nome, :controller=>s.url, :action=>:index 
-										            	link_to s.nome, :controller=>s.url
+										            	link_to s.nome, :controller=>s.url, :action=>:index 
+
 										            %>
 									            </li>
 									            <% end %>

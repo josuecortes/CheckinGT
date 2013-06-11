@@ -4,5 +4,6 @@ class Core::Porto < ActiveRecord::Base
   belongs_to :empresa, :class_name=>"Core::Empresa"
   belongs_to :uf, :class_name=>"Core::Uf"
   has_many :dads, :class_name=>"Aquaviario::Dad"
+  has_many :unidade_cargas, :class_name=>"Aquaviario::UnidadeCarga"
   
 end

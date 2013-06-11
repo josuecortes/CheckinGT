@@ -1,0 +1,85 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_carga_dcs_path(@dad) %> | Novo Documento Eletronico</h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@aquaviario_documento_eletronico, :url=>aquaviario_dad_unidade_carga_dcs_path(@dad, @uc), :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @aquaviario_documento_eletronico.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@aquaviario_documento_eletronico.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @aquaviario_documento_eletronico.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		<%= f.hidden_field :dad_id, :value=>@dad.id %>		
+		<%= f.hidden_field :unidade_carga_id, :value=>@uc.id %>
+		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>
+				
+		<div class="control-group">
+			<%= f.label :rodoviario_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:rodoviario_id, Core::Rodoviario.order('cnpj'),
+										:id, :cnpj, {:prompt => true}, 
+										:required=>true, :class=>"input-xlarge") 
+    		%>
+    			
+    		<%
+    			#codigo salvo
+    			#f.collection_select(:rodoviario_id, Core::Empresa.order('cnpj'),
+						#				:id, :cnpj, { :disabled =>lambda{|empresa| empresa.rodoviario.nil?}, :prompt => true}, 
+							#			:required=>true, :class=>"input-xlarge") 
+    		
+    		%>	
+    			
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :tipo_dc_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:tipo_dc_id, Core::TipoDc.order('descricao'),
+										:id, :descricao, {:prompt => true}, 
+										:required=>true, :class=>"input-xlarge") 
+    			%>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :documento, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :documento, :class=>"input-xxlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+				
+		<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>
+
+<%= link_to 'Voltar', aquaviario_dad_unidade_carga_dcs_path(@dad) %>
+

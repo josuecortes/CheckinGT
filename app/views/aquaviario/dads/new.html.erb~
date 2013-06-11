@@ -23,10 +23,10 @@
 				
 		<%= f.hidden_field :empresa_id, :value=>@usuario_logado.empresa_id %>
 		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>
-		<%= f.hidden_field :status_dad_id, :value=>1 %>
+		<%= f.hidden_field :status_dad_id, :value=>1001 %>
 		<%= f.hidden_field :status_dad_data, :value=>DateTime.now %>
-		<%= f.hidden_field :status_processamento_id, :value=>1 %>
-		<%= f.hidden_field :status_processamento_data, :value=>Datetime.now %>
+		<%= f.hidden_field :status_processamento_id, :value=>1001 %>
+		<%= f.hidden_field :status_processamento_data, :value=>DateTime.now %>
 		
 		<div class="control-group">
 			<%= f.label :empurrador, :class=>"control-label" %>

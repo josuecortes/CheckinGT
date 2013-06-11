@@ -1,0 +1,2 @@
+module Core::PatioPortosHelper
+end

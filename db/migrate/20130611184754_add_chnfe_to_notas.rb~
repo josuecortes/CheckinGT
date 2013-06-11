@@ -1,0 +1,5 @@
+class AddChnfeToNotas < ActiveRecord::Migration
+  def change
+    add_column :notas, :CHNFE, :string
+  end
+end

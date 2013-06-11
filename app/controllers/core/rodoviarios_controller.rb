@@ -2,82 +2,71 @@ class Core::RodoviariosController < ApplicationController
   # GET /core/rodoviarios
   # GET /core/rodoviarios.json
   def index
-    @core_rodoviarios = Core::Rodoviario.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @core_rodoviarios }
-    end
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+    @core_rodoviario = @empresa.rodoviario
   end
 
-  # GET /core/rodoviarios/1
-  # GET /core/rodoviarios/1.json
   def show
-    @core_rodoviario = Core::Rodoviario.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @core_rodoviario }
-    end
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+    @core_rodoviario = @empresa.rodoviario
   end
 
-  # GET /core/rodoviarios/new
-  # GET /core/rodoviarios/new.json
   def new
+    @empresa = Core::Empresa.find(params[:empresa_id])
     @core_rodoviario = Core::Rodoviario.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @core_rodoviario }
-    end
+   
   end
 
-  # GET /core/rodoviarios/1/edit
   def edit
-    @core_rodoviario = Core::Rodoviario.find(params[:id])
+    @empresa = Core::Empresa.find(params[:empresa_id])
+    @core_rodoviario = @empresa.rodoviario
   end
 
-  # POST /core/rodoviarios
-  # POST /core/rodoviarios.json
-  def create
+  	def create
+  	@empresa = Core::Empresa.find(params[:empresa_id])
     @core_rodoviario = Core::Rodoviario.new(params[:core_rodoviario])
-
-    respond_to do |format|
-      if @core_rodoviario.save
-        format.html { redirect_to @core_rodoviario, notice: 'Rodoviario was successfully created.' }
-        format.json { render json: @core_rodoviario, status: :created, location: @core_rodoviario }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @core_rodoviario.errors, status: :unprocessable_entity }
-      end
-    end
+		if @empresa.rodoviario
+   		flash[:error] = "Dados Rodoviarios ja registrados"
+   		redirect_to core_empresa_rodoviarios_path(@empresa)
+   	else
+   		if @core_rodoviario.save
+    	  flash[:success] = "Salvo com sucesso"
+    	  redirect_to core_empresa_rodoviarios_path(@empresa)
+   		else
+    		flash[:error] = "Erro ao salvar"
+    		render action: "new"      
+    	end
+  	end	
   end
 
-  # PUT /core/rodoviarios/1
-  # PUT /core/rodoviarios/1.json
   def update
-    @core_rodoviario = Core::Rodoviario.find(params[:id])
+   @empresa = Core::Empresa.find(params[:empresa_id])
+   @core_rodoviario = @empresa.rodoviario
 
-    respond_to do |format|
-      if @core_rodoviario.update_attributes(params[:core_rodoviario])
-        format.html { redirect_to @core_rodoviario, notice: 'Rodoviario was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @core_rodoviario.errors, status: :unprocessable_entity }
-      end
-    end
+   if @core_rodoviario.update_attributes(params[:core_rodoviario])
+   	flash[:success] = "Atualizado com sucesso"
+   	redirect_to core_empresa_rodoviarios_path(@empresa)
+   else
+   	flash[:error] = "Erro ao Atualizar"
+   	render action: "edit"      
+   end
   end
 
-  # DELETE /core/rodoviarios/1
-  # DELETE /core/rodoviarios/1.json
   def destroy
-    @core_rodoviario = Core::Rodoviario.find(params[:id])
-    @core_rodoviario.destroy
-
-    respond_to do |format|
-      format.html { redirect_to core_rodoviarios_url }
-      format.json { head :no_content }
+  	@empresa = Core::Empresa.find(params[:empresa_id])
+   	@core_rodoviario = @empresa.rodoviario
+   	if @core_rodoviario.status == true
+    	@core_rodoviario.status = false
+    else
+    	@core_rodoviario.status = true
+    end
+    
+    if @core_rodoviario.save
+    	flash[:success] = "Status alterado para #{@core_rodoviario.status}"
+    	redirect_to core_empresa_rodoviarios_path(@empresa)
+    else
+    	flash[:error] = "Status nao pode ser alterado"
+    	redirect_to core_empresa_rodoviarios_path(@empresa)
     end
   end
 end

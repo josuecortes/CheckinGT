@@ -10,6 +10,8 @@ class CreateAquaviarioDads < ActiveRecord::Migration
       t.datetime :efetiva_chegada
       t.integer :usuario_id
       t.integer :usuario_alterou_id
+      t.integer :status_unidade_carga_id
+      t.datetime :status_unidade_carga_data
 
       t.timestamps
     end

@@ -20,6 +20,9 @@
 			</ul>
 		</div>
 		<% end %>
+		
+		<%= f.hidden_field :status_dad_id, :value=>1001 %>
+		<%= f.hidden_field :status_processamento_id, :value=>1001 %>		
 				
 	
 		<%= f.hidden_field :usuario_alterou_id, :value=>@usuario_logado.id %>
@@ -70,7 +73,7 @@
 		<div class="control-group">
 			<%= f.label :previsao_chegada, :class=>"control-label" %>
 			<div class="controls">
-				<%= f.text_field :previsao_chegada, :class=>"input-xlarge", @aquaviario_dad.previsao_chegada.to_s_br %>
+				<%= f.text_field :previsao_chegada, :class=>"input-xlarge", :value=>@aquaviario_dad.previsao_chegada.to_s_br %>
 				<p class="help-block">
 					
 				</p>

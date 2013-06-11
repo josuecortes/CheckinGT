@@ -1,0 +1,5 @@
+class AddCamposToDocumentoEletronicos < ActiveRecord::Migration
+  def change
+    add_column :aquaviario_documento_eletronicos, :status_documento_eletronico_id, :integer
+  end
+end

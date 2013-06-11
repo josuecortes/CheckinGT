@@ -6,8 +6,8 @@ class CreateAquaviarioUnidadeCargas < ActiveRecord::Migration
       t.string :placa
       t.integer :termo_lacre_id
       t.integer :termo_vistoria_id
-      t.integer :termo_fiel_depositario_id
-      t.integer :termo_fiel_depositario_data
+      t.integer :termo_fd_id
+      t.integer :termo_fd_data
       t.integer :status_unidade_carga_id
       t.datetime :status_unidade_carga_data
       t.integer :status_processamento_id

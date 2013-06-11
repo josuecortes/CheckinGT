@@ -1,0 +1,74 @@
+<div class="page-header">
+	<h3>Lista de Documento(s) Auxiliar(es) de Desembaraço - DAD</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Numero DAD</th>	
+			
+			<th>Empurrador</th>			
+			
+			<th>Balsa</th>			
+			
+			<th>Porto origem</th>
+			
+			<th>Quantidade de cargas</th>
+			
+			<th>Porto destino</th>
+			
+			<th>Previsao chegada</th>
+			
+			<th>Status DAD</th>
+			
+			<th>Data status DAD</th>
+			
+			<th>Status proc</th>
+
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @aquaviario_dads) do |aquaviario_dad| %>
+		
+		<td><%= aquaviario_dad.id %></td>
+		
+		<td><%= aquaviario_dad.empurrador %></td>
+		
+		<td><%= aquaviario_dad.balsa %></td>
+		
+		<td><%= aquaviario_dad.porto_origem %></td>
+		
+		<td><%= aquaviario_dad.unidade_cargas.size %></td>
+		
+		<td><%= aquaviario_dad.porto_destino.descricao %></td>
+		
+		<td><%= aquaviario_dad.previsao_chegada.to_s_br %></td>
+		
+		<td><%= aquaviario_dad.status_dad.descricao %></td>
+		
+		<td><%= aquaviario_dad.status_dad_data.to_s_br %></td>
+		
+		<td><%= aquaviario_dad.status_processamento.descricao %></td>
+				
+		<td>
+			<%= link_to 'Mostrar', porto_registro_entrada_path(aquaviario_dad), :class=>"btn btn-small"%>
+			
+			<% if aquaviario_dad.status_dad_id != 10003 %>
+				<%= link_to 'Registrar Entrada', porto_registro_entrada_path(aquaviario_dad), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %>
+			<% end %>
+		</td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @aquaviario_dads, :previous_label => '<<', :next_label => '>>' %>
+</div>
+
+
+

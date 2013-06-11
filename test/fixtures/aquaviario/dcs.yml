@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dad_id: 1
+  documento: MyString
+  rodoviario_id: 1
+  tipo_dc_id: 1
+  unidade_carga_id: 
+  : 
+
+two:
+  dad_id: 1
+  documento: MyString
+  rodoviario_id: 1
+  tipo_dc_id: 1
+  unidade_carga_id: 
+  : 

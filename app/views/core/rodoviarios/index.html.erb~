@@ -1,0 +1,40 @@
+<div class="page-header">
+	<h3> <%= link_to "Voltar", core_empresa %> | Empresa Rodoviaria</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Empresa</th>
+			
+			<th>Registro antt</th>
+			
+			<th>Status</th>
+			
+			<th></th>
+		</tr>
+	</thead>
+
+	<% if @empresa.rodoviario %>
+		<tbody>
+			<tr>
+		
+			<td><%= @core_rodoviario.empresa_id %></td>
+		
+			<td><%= @core_rodoviario.registro_antt %></td>
+		
+			<td><%= @core_rodoviario.status %></td>
+		
+			<td><%= link_to 'Mostrar', core_empresa_rodoviario_path(@empresa, @core_rodoviario), :class=>"btn btn-small"%></td>
+			<td><%= link_to 'Editar', edit_core_empresa_rodoviario_path(@empresa, @core_rodoviario), :class=>"btn btn-primary btn-small" %></td>
+			<td><%= link_to 'Mudar Status', core_empresa_rodoviario_path(@empresa, @core_rodoviario), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+			</tr>
+		</tbody>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Rodoviario', new_core_empresa_rodoviario_path, :class=>"btn btn-success" %>
+

@@ -1,0 +1,2 @@
+module Porto::RegistroEntradasHelper
+end

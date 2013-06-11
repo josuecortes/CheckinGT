@@ -1,0 +1,5 @@
+class AddPortoDestinoIdToUnicadeCarga < ActiveRecord::Migration
+  def change
+    add_column :aquaviario_unicade_cargas, :porto_destino_id, :integer
+  end
+end

@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+	
+	#variavel global teste
+	@@POR_PAGINA = 5
+	
+	
   #chamada de funcoes
 
   #antes de rodar o controllador vai rodar a funcao autenticado

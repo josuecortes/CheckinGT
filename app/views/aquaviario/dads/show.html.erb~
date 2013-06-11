@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h3><%= link_to 'Voltar', aquaviario_dads_path %> | Exibindo DAD</h3>
+	<h3><%= link_to 'Voltar', aquaviario_dads_path %> | Exibindo D.A.D. Numero <%= @aquaviario_dad.id %></h3>
 </div>
 
 
@@ -40,14 +40,17 @@
 
 <p>
 	<strong>Usuario:</strong>
-	<%= @aquaviario_dad.usuario_id %>
+	<%= @aquaviario_dad.usuario.nome %>
+	<strong>Em: </strong><%= @aquaviario_dad.created_at.to_s_br %>
 </p>
 
-
-<p>
-	<strong>Usuario alterou:</strong>
-	<%= @aquaviario_dad.usuario_alterou_id %>
-</p>
+<% if @aquaviario_dad.usuario_alterou_id != nil %>
+	<p>
+		<strong>Usuario alterou:</strong>
+		<%= @aquaviario_dad.usuario_alterou.nome %>
+		<strong>Em: </strong><%= @aquaviario_dad.updated_at.to_s_br %>
+	</p>
+<% end %>
 
 <h4>Unidades de Carga</h4>
 
@@ -78,7 +81,7 @@
 		
 				<td><%= aquaviario_unidade_carga.tipo_unidade.descricao %></td>
 		
-				<td><%= aquaviario_unidade_carga.documento_eletronicos.size %></td>
+				<td><%= aquaviario_unidade_carga.dcs.size %></td>
 		
 				<td><%= aquaviario_unidade_carga.usuario.nome %> - <%= aquaviario_unidade_carga.created_at.to_s_br %></td>
 						
@@ -88,7 +91,7 @@
 		<tr><td colspan="4"><h5><center>Documentos da Unidade <%= aquaviario_unidade_carga.placa %></center></h5></td></tr>
 		
 		
-		<table class="table table-bordered table-striped table-hover">		
+		
 			<thead>
 				<tr>
 						
@@ -102,19 +105,19 @@
 			</thead>
 
 			<tbody>
-				<% aquaviario_unidade_carga.documento_eletronicos.each do |aquaviario_documento_eletronico| %>
+				<% aquaviario_unidade_carga.dcs.each do |aquaviario_documento_eletronico| %>
 				<tr>
 				
-					<td><%= aquaviario_documento_eletronico.tipo_documento_eletronico.descricao %></td>
+					<td><%= aquaviario_documento_eletronico.tipo_dc.descricao %></td>
 		
 					<td><%= aquaviario_documento_eletronico.documento %></td>
 		
-					<td colspan="2"><%= aquaviario_documento_eletronico.rodoviario_id %></td>
+					<td colspan="2"><%= aquaviario_documento_eletronico.rodoviario.empresa.nome %></td>
 						
 				<tr>
 				<% end %>
 			</tbody>
-		</table>	
+			
 		
 		
 	</table>

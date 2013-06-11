@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h3>Exibindo core_aquaviario</h3>
+</div>
+
+
+<p>
+	<strong>Empresa:</strong>
+	<%= @core_aquaviario.empresa_id %>
+</p>
+
+
+<p>
+	<strong>Registro antaq:</strong>
+	<%= @core_aquaviario.registro_antaq %>
+</p>
+
+
+<p>
+	<strong>Status:</strong>
+	<%= @core_aquaviario.status %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_empresa_aquaviario_path(@empresa, @core_aquaviario) %> |
+<%= link_to 'Voltar', core_empresa_aquaviarios_path(@empresa) %>
+

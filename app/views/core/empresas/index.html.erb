@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h3>Lista de core_empresas</h3>
+	<h3>Lista de Empresas</h3>
 </div>
 
 <table class="table table-bordered table-striped table-hover">
@@ -7,6 +7,8 @@
 		<tr>
 			
 			<th>Cnpj</th>
+			
+			<th>Nome fantasia</th>
 			
 			<th>Inscricao estadual</th>
 			
@@ -30,6 +32,8 @@
 		
 		<td><%= core_empresa.cnpj %></td>
 		
+		<td><%= core_empresa.nome_fantasia %></td>
+		
 		<td><%= core_empresa.inscricao_estadual %></td>
 		
 		<td><%= core_empresa.descricao %></td>
@@ -47,8 +51,24 @@
 			<%= link_to 'Editar', edit_core_empresa_path(core_empresa), :class=>"btn btn-primary btn-small" %>
 			<%= link_to 'Apagar', core_empresa, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %>
 			<%= link_to 'Modulos', core_empresa_empresa_modulos_path(core_empresa), :class=>"btn btn-success btn-small" %>
-			<%= link_to 'Cad Usuario', core_empresa_usuario_master_index_path(core_empresa), :class=>"btn btn-success btn-small" %>
-			<%= link_to 'Cad Porto', core_empresa_portos_path(core_empresa), :class=>"btn btn-success btn-small" %>
+			<%= link_to "Cad Usuario (#{core_empresa.usuarios.size})", core_empresa_usuario_master_index_path(core_empresa), :class=>"btn btn-success btn-small" %>
+			<%= link_to "Cad Porto (#{core_empresa.portos.size})", core_empresa_portos_path(core_empresa), :class=>"btn btn-success btn-small" %>
+			<%
+				if core_empresa.aquaviario.nil?
+					aqua = 0
+				else
+					aqua = 1
+				end
+				
+				if core_empresa.rodoviario.nil?
+					rodo = 0
+				else
+					rodo = 1
+				end
+				
+			%>			
+			<%= link_to "Cad Aquaviario (#{aqua})", core_empresa_aquaviarios_path(core_empresa), :class=>"btn btn-success btn-small" %>
+			<%= link_to "Cad Rodoviario (#{rodo})", core_empresa_rodoviarios_path(core_empresa), :class=>"btn btn-success btn-small" %>
 		</td>		
 		<% end %>
 	</tbody>

@@ -1,0 +1,5 @@
+class AddCnpjToRodoviario < ActiveRecord::Migration
+  def change
+    add_column :rodoviarios, :cnpj, :string
+  end
+end

@@ -1,0 +1,82 @@
+<div class="page-header">
+	<h3>Lista de Unidades de Carga	</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		
+		<tr>
+			
+			<th>DAD</th>
+			
+			<th>Status DAD</th>
+			
+			<th>Transp Aquaviario</th>
+			
+			<th>Empurrador e balsa</th>
+			
+			<th>Data registro entrada</th>
+			
+			<th>Unidade de carga</th>
+			
+			<th>Status parametrização</th>
+			
+			<th>Data parametrização</th>
+			
+			<th>Status desembaraço	</th>
+			
+			<th>Tipo unidade de carga</th>
+			
+			<th>QDTE documentos eletronicos</th>
+				
+			<th>Criado Por</th>
+			
+			<th></th>
+						
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @aucs) do |aquaviario_unidade_carga| %>
+		
+			<td><%= aquaviario_unidade_carga.dad.id %></td>
+		
+			<td><%= aquaviario_unidade_carga.dad.status_dad.descricao %></td>
+		
+			<td><%= aquaviario_unidade_carga.dad.empresa.nome_fantasia %></td>
+		
+			<td><%= aquaviario_unidade_carga.dad.empurrador %> <br> <%= aquaviario_unidade_carga.dad.balsa %></td>
+		
+			<td><%= aquaviario_unidade_carga.data_registro_entrada %></td>
+		
+			<td><%= aquaviario_unidade_carga.placa %></td>
+		
+			<td><%= aquaviario_unidade_carga.status_unidade_carga.descricao %></td>
+		
+			<td><%= aquaviario_unidade_carga.status_parametrizacao_data.to_s_br %></td>
+		
+			<td><%= aquaviario_unidade_carga.status_desembaraco.descricao %></td>
+		
+			<td><%= aquaviario_unidade_carga.tipo_unidade.descricao %></td>
+		
+			<td><%= aquaviario_unidade_carga.dcs.size %></td>
+		
+			<td><%= aquaviario_unidade_carga.usuario.nome %> - <%= aquaviario_unidade_carga.created_at.to_s_br %></td>
+		
+			<% if aquaviario_unidade_carga.status_unidade_carga_id == 10009 and (aquaviario_unidade_carga.status_desembaraco_id == 10002 or aquaviario_unidade_carga.status_desembaraco_id == 10003) and aquaviario_unidade_carga.dad.status_dad_id == 10003  %>
+				<td><%= link_to "Solicitar saida", porto_unidade_carga_solicitar_saidas_path(aquaviario_unidade_carga), :class=>"btn btn-primary" %></td>
+			<% elsif aquaviario_unidade_carga.status_unidade_carga_id == 10010 %>
+				<td> <%= link_to " Reimprimir Termo de Saida", porto_unidade_carga_solicitar_saida_path(aquaviario_unidade_carga, aquaviario_unidade_carga.id), :class=>"btn btn-primary" %> </td>
+			<% else %>		
+				<td></td>
+			<% end %>			
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @aucs, :previous_label => '<<', :next_label => '>>' %>
+</div>
+

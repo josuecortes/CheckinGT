@@ -15,7 +15,7 @@ class Core::PortosController < ApplicationController
   # GET /core/portos/1.json
   def show
   	@empresa = Core::Empresa.find(params[:empresa_id])
-    @core_portos = Core::Porto.find(params[:id])
+    @core_porto = Core::Porto.find(params[:id])
 
 
     respond_to do |format|

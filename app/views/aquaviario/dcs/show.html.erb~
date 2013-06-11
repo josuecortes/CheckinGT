@@ -1,0 +1,46 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_carga_dcs_path(@dad) %> | Exibindo Documento Eletronico da Unidade <%= @uc.placa %></h3>
+</div>
+
+
+<p>
+	<strong>Dad:</strong>
+	<%= @aquaviario_documento_eletronico.dad_id %>
+</p>
+
+
+<p>
+	<strong>Unidade carga:</strong>
+	<%= @aquaviario_documento_eletronico.unidade_carga_id %>
+</p>
+
+
+<p>
+	<strong>Tipo documento eletronico:</strong>
+	<%= @aquaviario_documento_eletronico.tipo_dc.descricao %>
+</p>
+
+
+<p>
+	<strong>Rodoviario:</strong>
+	<%= @aquaviario_documento_eletronico.rodoviario.empresa.nome_fantasia %>
+</p>
+
+
+<p>
+	<strong>Documento:</strong>
+	<%= @aquaviario_documento_eletronico.documento %>
+</p>
+
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @aquaviario_documento_eletronico.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @aquaviario_documento_eletronico.created_at.to_s_br %>
+</p>
+
+<%= 
+link_to 'Editar', edit_aquaviario_dad_unidade_carga_dc_path(@dad, @uc, @aquaviario_documento_eletronico) %> |
+<%= link_to 'Voltar', aquaviario_dad_unidade_carga_dcs_path(@dad) %>
+

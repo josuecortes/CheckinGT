@@ -1,11 +1,11 @@
 <div class="page-header">
-	<h3>Editando aquaviario_unidade_carga</h3>
+	<h3>Editando Unidade de Carga <%= @dad.id %></h3>
 </div>
 
 <div class="row">
 	<div class="span10 offset1">
 
-		<%= form_for(@aquaviario_unidade_carga, :url=>aquaviario_dad_unidade_cargas_path(@dad), :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<%= form_for(@aquaviario_unidade_carga, :url=>aquaviario_dad_unidade_carga_path(@dad, @aquaviario_unidade_carga), :html=>{:class=>"form-horizontal well"}) do |f| %>
 		<% if @aquaviario_unidade_carga.errors.any? %>
 		<div class="alert alert-error">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>

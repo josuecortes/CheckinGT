@@ -1,0 +1,40 @@
+<div class="page-header">
+	<h3>Lista de core_patio_portos</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Empresa</th>
+			
+			<th>Descricao</th>
+			
+			<th>Endereco</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_patio_portos) do |core_patio_porto| %>
+		
+		<td><%= core_patio_porto.empresa_id %></td>
+		
+		<td><%= core_patio_porto.descricao %></td>
+		
+		<td><%= core_patio_porto.endereco %></td>
+		
+		<td><%= link_to 'Mostrar', core_patio_porto, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_patio_porto_path(core_patio_porto), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_patio_porto, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Patio porto', new_core_patio_porto_path, :class=>"btn btn-success" %>
+

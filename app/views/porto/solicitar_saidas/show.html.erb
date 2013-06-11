@@ -1,0 +1,71 @@
+
+<div class="ocultos" align="center">
+	<fieldset>	
+		Orientação da Pagina para Retrato.
+		<br><br>
+		<%= link_to 'Voltar', porto_unidade_cargas_path, :class=>"btn btn btn-small" %>
+		<input type="button" onClick="window.print()" value="Imprimir"/>
+	</fieldset>
+	<br>
+</div>
+
+
+<table align="center" width="640" class="bordasimples">	
+	<thead>
+		
+		<tr>
+			<td colspan="3" align="center">
+				<div><strong>TERMO DE SAIDA</strong></div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="3">
+				<div><strong>PORTO:</strong> <%= @auc.porto_destino.descricao %></div>
+				<div><strong>TERMO DE SAIDA:</strong> </div>
+				<div><strong>UNIDADE DE CARGA:</strong> <%= @auc.placa %></div>
+			</td>
+		</tr>	
+		
+		<tr>	
+			
+			<td width="30%"><strong>Chegada efetiva<strong></td>
+			<td></td>
+			
+		</tr>	
+		<tr>
+			
+			<td><strong>Quantidade de documentos fiscais<strong></td>
+			<td><%= @auc.dcs.size %></td>
+			
+		</tr>
+		<tr>
+			
+			<td><strong>Tipo de unidade de carga<strong></td>
+			<td><%= @auc.tipo_unidade.descricao %></td>
+			
+		</tr>
+		
+		<tr>
+			<td colspan="3" align="center">
+				<div><strong>DADOS TERMO FIEL DEPOSITARIO<strong></div>
+			</td>
+		</tr>	
+		
+		<tr>
+			<td colspan="2">
+				<strong>
+				<div>REPRESENTANTE TRANSPORTADORA: </div>
+				<div>REPRESENTANTE FISCO: </div>
+				<div>DATA DA EMISSÃO DO TERMO: 	</div>
+				</strong>
+			</td>
+		</tr>	
+			
+	</thead>
+	
+</table>
+
+<br />
+
+

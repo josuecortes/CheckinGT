@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h3>Exibindo core_rodoviario</h3>
+	<h3> <%= link_to 'Voltar', core_empresa_rodoviarios_path(@empresa, @core_rodoviario) %> | Exibindo Empresa Rodoviaria</h3>
 </div>
 
 
@@ -22,6 +22,6 @@
 
 
 
-<%= link_to 'Editar', edit_core_rodoviario_path(@core_rodoviario) %> |
-<%= link_to 'Voltar', core_rodoviarios_path %>
+<%= link_to 'Editar', edit_core_empresa_rodoviario_path(@empresa, @core_rodoviario) %> |
+<%= link_to 'Voltar', core_empresa_rodoviarios_path(@empresa, @core_rodoviario) %>
 

@@ -1,0 +1,5 @@
+class AddNomeFantasiaToEmpresa < ActiveRecord::Migration
+  def change
+    add_column :empresas, :nomeFantasia, :string
+  end
+end

@@ -1,0 +1,50 @@
+<div class="page-header">
+	<h3> <%= link_to 'Voltar', core_empresas_path %> | Lista de Empresas Aquaviarias</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Empresa</th>
+			
+			<th>Registro antaq</th>
+			
+			<th>Status</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	
+	<% if @empresa.rodoviario %>
+	
+		<tbody>
+			<tr>
+		
+				<td><%= @empresa.aquaviario.empresa_id %></td>
+		
+				<td><%= @empresa.aquaviario.registro_antaq %></td>
+		
+				<td><%= @empresa.aquaviario.status %></td>
+		
+				<td><%= link_to 'Mostrar', core_empresa_aquaviario_path(@empresa, @empresa.aquaviario), :class=>"btn btn-small"%></td>
+				<td><%= link_to 'Editar', edit_core_empresa_aquaviario_path(@empresa,@empresa.aquaviario), :class=>"btn btn-primary btn-small" %></td>
+				<td><%= link_to 'Mudar Status', core_empresa_aquaviario_path(@empresa, @empresa.aquaviario), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		
+			<tr>
+		
+		</tbody>
+	
+	<% end %>
+	
+</table>
+
+<br />
+
+<% if !@empresa.aquaviario %>
+
+	<%= link_to 'Novo(a) Aquaviario', new_core_empresa_aquaviario_path(@empresa), :class=>"btn btn-success" %>
+
+<% end %>

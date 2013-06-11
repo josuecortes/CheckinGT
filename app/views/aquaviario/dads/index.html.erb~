@@ -1,12 +1,12 @@
 <div class="page-header">
-	<h3>Lista de aquaviario_dads</h3>
+	<h3>Lista de Documento(s) Auxiliar(es) de Desembaraço - DAD</h3>
 </div>
 
 <table class="table table-bordered table-striped table-hover">
 	<thead>
 		<tr>
 			
-			<th>Numero DAD</th>
+			<th>Numero DAD</th>	
 			
 			<th>Empurrador</th>			
 			
@@ -25,8 +25,9 @@
 			<th>Data status DAD</th>
 			
 			<th>Status proc</th>
+			
+			<th>Pesquisa </br> <%= render "search" %> </th> 
 
-			<th></th>
 		</tr>
 	</thead>
 
@@ -52,21 +53,27 @@
 		<td><%= aquaviario_dad.status_dad_data.to_s_br %></td>
 		
 		<td><%= aquaviario_dad.status_processamento.descricao %></td>
-		
-		<td><%= link_to "Unidade de Carga (#{aquaviario_dad.unidade_cargas.size})", aquaviario_dad_unidade_cargas_path(aquaviario_dad), :class=>"btn btn-success" %> </td>
-		<td><%= link_to 'Mostrar', aquaviario_dad, :class=>"btn btn-small"%></td>
-		<td><%= link_to 'Editar', edit_aquaviario_dad_path(aquaviario_dad), :class=>"btn btn-primary btn-small" %></td>
-		<td><%= link_to 'Apagar', aquaviario_dad, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+				
+		<td><%= link_to 'Mostrar', aquaviario_dad, :class=>"btn btn-small"%>
+		<%= link_to 'Editar', edit_aquaviario_dad_path(aquaviario_dad), :class=>"btn btn-primary btn-small" %>
+		<%= link_to 'Apagar', aquaviario_dad, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %>
+		<%= link_to "Unidade de Carga (#{aquaviario_dad.unidade_cargas.size})", aquaviario_dad_unidade_cargas_path(aquaviario_dad), :class=>"btn btn-success" %> 
+		<% if aquaviario_dad.status_dad_id == 10000 %>
+			<%= link_to "Enviar", aquaviario_dad_enviar_path(aquaviario_dad), :class=>"btn btn-success" %>
+		<% end %>
+		</td>
 		<% end %>
 	</tbody>
 </table>
 
 <br />
+
 <div class="pagination pagination-centered">
-	<%= will_paginate @aquaviario_embarques, :previous_label => '<<', :next_label => '>>' %>
+	<%= will_paginate @aquaviario_dads, :previous_label => '<<', :next_label => '>>' %>
 </div>
+
 <br />
 
-<%= link_to 'Novo(a) Dad', new_aquaviario_dad_path, :class=>"btn btn-success" %>
+<%= link_to 'Novo DAD', new_aquaviario_dad_path, :class=>"btn btn-success" %>
 
 

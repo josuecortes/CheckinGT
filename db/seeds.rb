@@ -29,11 +29,13 @@ s14 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Cont
 s15 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Processamento", :sigla=>"ContStatusProcessosGeral", :url=>"/core/status_processamentos", :controlador=>"Core::StatusProcessamentosController", :status=>true)
 s16 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Desembaraco", :sigla=>"ContStatusDesembaracoGeral", :url=>"/core/status_desembaracos", :controlador=>"Core::StatusDesembaracosController", :status=>true)
 s17 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Selo Fiscal", :sigla=>"ContStatusSeloFiscalGeral", :url=>"/core/status_selo_fiscal_tipos", :controlador=>"Core::StatusSeloFiscalTiposController", :status=>true)
-s18 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Fiel Depositario", :sigla=>"ContStatusFielDepositarioGeral", :url=>"/core/status_termo_fiel_depositarios", :controlador=>"Core::StatusTermoFielDepositariosController", :status=>true)
+s18 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Fiel Depositario", :sigla=>"ContStatusFielDepositarioGeral", :url=>"/core/status_termo_fds", :controlador=>"Core::StatusTermoFdsController", :status=>true)
 s19 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Tipo de Detalhe", :sigla=>"ContStatusTipoDetalhesGeral", :url=>"/core/tipo_detalhes", :controlador=>"Core::TipoEventosController", :status=>true)
 s20 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status do Tipo de Evento", :sigla=>"ContStatusTipoEventosGeral", :url=>"/core/tipo_eventos", :controlador=>"Core::TipoDetalhesController", :status=>true)
 s21 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Tipo de Unidades de Carga", :sigla=>"ContTipoUCGeral", :url=>"/core/tipo_unidades", :controlador=>"Core::TipoUnidadesController", :status=>true)
-s22 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Tipo de Documento Eletronico", :sigla=>"ContTipoDocuEletronGeral", :url=>"/core/tipo_documento_eletronicos", :controlador=>"Core::TipoDocumentoEletronicosController", :status=>true)
+s22 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Tipo de Documento Eletronico", :sigla=>"ContTipoDocuEletronGeral", :url=>"/core/tipo_dcs", :controlador=>"Core::TipoDcsController", :status=>true)
+s23 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Empresa Rodoviaria", :sigla=>"ContEmpRodoviaria", :url=>"", :controlador=>"Core::RodoviariosController", :status=>true)
+s24 = Core::Sistema.find_or_create_by_controlador(:modulo_id=>m.id, :nome=>"Controle Geral de Status de Parametrizacao", :sigla=>"ContStatusParam", :url=>"/core/status_parametrizacao", :controlador=>"Core::StatusParametrizacaosController", :status=>true)
 
 
 
@@ -64,6 +66,9 @@ Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :s
 Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s20.id)
 Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s21.id)
 Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s22.id)
+Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s23.id)
+Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s24.id)
+
 
 #Core::GrupoSistema.find_or_create_by_grupo_id_and_sistema_id(:grupo_id=>g.id, :sistema_id=>s21.id)
 
@@ -116,6 +121,7 @@ Core::StatusUnidadeCarga.find_or_create_by_descricao(:descricao=>"A espera de ag
 Core::StatusUnidadeCarga.find_or_create_by_descricao(:descricao=>"A espera de vistoria")
 Core::StatusUnidadeCarga.find_or_create_by_descricao(:descricao=>"Vistoriada")
 Core::StatusUnidadeCarga.find_or_create_by_descricao(:descricao=>"Nao parametrizada")
+Core::StatusUnidadeCarga.find_or_create_by_descricao(:descricao=>"Registrada saida")
 
 #populando status do processamento
 Core::StatusProcessamento.find_or_create_by_descricao(:descricao=>"Nao processado")
@@ -133,8 +139,8 @@ Core::StatusSeloFiscalTipo.find_or_create_by_descricao(:descricao=>"Automatico")
 Core::StatusSeloFiscalTipo.find_or_create_by_descricao(:descricao=>"Manual")
 
 #populando status termo fiel depositario
-Core::StatusTermoFielDepositario.find_or_create_by_descricao(:descricao=>"Em aberto")
-Core::StatusTermoFielDepositario.find_or_create_by_descricao(:descricao=>"Encerrado")
+Core::StatusTermoFd.find_or_create_by_descricao(:descricao=>"Em aberto")
+Core::StatusTermoFd.find_or_create_by_descricao(:descricao=>"Encerrado")
 
 #populando status tipo de evento
 Core::TipoEvento.find_or_create_by_descricao(:descricao=>"Pagamento de imposto antecipado")
@@ -151,10 +157,14 @@ Core::TipoUnidade.find_or_create_by_descricao(:descricao=>"Bau")
 Core::TipoUnidade.find_or_create_by_descricao(:descricao=>"Container")
 
 #populando Tipo de Documento Eletronico
-Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"CTE - Aquaviario")
-Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"CTE - Rodoviario")
-Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"NFE")
-Core::TipoDocumentoEletronico.find_or_create_by_descricao(:descricao=>"Capa de Lote")
+Core::TipoDc.find_or_create_by_descricao(:descricao=>"CTE - Aquaviario")
+Core::TipoDc.find_or_create_by_descricao(:descricao=>"CTE - Rodoviario")
+Core::TipoDc.find_or_create_by_descricao(:descricao=>"NFE")
+Core::TipoDc.find_or_create_by_descricao(:descricao=>"Capa de Lote")
+
+#populando Status Parametrização
+Core::StatusParametrizacao.find_or_create_by_descricao(:descricao=>"Nao parametrizado")
+Core::StatusParametrizacao.find_or_create_by_descricao(:descricao=>"Parametrizado")
 
 ################################## fim do core
 
@@ -166,7 +176,13 @@ mm = Core::Modulo.find_or_create_by_nome(:nome=>"Empresa", :sigla=>"ModEmpresa",
 ma = Core::Modulo.find_or_create_by_nome(:nome=>"Aquaviario", :sigla=>"ModAqua", :status=>true)
 Core::Sistema.find_or_create_by_controlador(:modulo_id=>ma.id, :nome=>"Controle de Documento Auxiliar de Desembaraco", :sigla=>"ContDadAqua", :url=>"/aquaviario/dads", :controlador=>"Aquaviario::DadsController", :status=>true)
 Core::Sistema.find_or_create_by_controlador(:modulo_id=>ma.id, :nome=>"Controle Geral de Unidade de Carga", :sigla=>"ContUnidCargaGeral", :url=>"", :controlador=>"Aquaviario::UnidadeCargasController", :status=>true)
-Core::Sistema.find_or_create_by_controlador(:modulo_id=>ma.id, :nome=>"Controle Geral de Documento Eletronico", :sigla=>"ContDocEletGeral", :url=>"", :controlador=>"Aquaviario::DocumentoEletronicosController", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>ma.id, :nome=>"Controle Geral de Documento Eletronico", :sigla=>"ContDocEletGeral", :url=>"", :controlador=>"Aquaviario::DcsController", :status=>true)
+
+#modulo porto
+mp = Core::Modulo.find_or_create_by_nome(:nome=>"Porto", :sigla=>"ModPort", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>mp.id, :nome=>"Controle de Registro de Entrada de DAD", :sigla=>"ContRegEntraPorto", :url=>"/porto/registro_entradas", :controlador=>"Porto::RegistroEntradasController", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>mp.id, :nome=>"Controle de Unidades de Carga", :sigla=>"ContUnidCargaPorto", :url=>"/porto/unidade_cargas", :controlador=>"Porto::UnidadeCargasController", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>mp.id, :nome=>"Controle Geral de Solicitacao de Saidas", :sigla=>"ContSolicSaidas", :url=>"", :controlador=>"Porto::SolicitarSaidasController", :status=>true)
 
 
 #modulo transportadoras

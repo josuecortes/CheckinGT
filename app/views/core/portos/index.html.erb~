@@ -24,9 +24,10 @@
 	</thead>
 
 	<tbody>
-		<%= content_tag_for(:tr, @core_portos) do |core_porto| %>
+	
+		<%= content_tag_for(:tr, @empresa.portos) do |core_porto| %>
 		
-		td><%= core_porto.descricao %></td>
+		<td><%= core_porto.descricao %></td>
 						
 		<td><%= core_porto.regsitro_imovel %></td>
 		

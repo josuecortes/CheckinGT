@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad) %> | Exibindo Unidade de Carga</h3>
+	<h3><%= link_to 'Voltar', aquaviario_dad_unidade_cargas_path(@dad) %> | Exibindo Unidade de Carga <%= @dad.id %></h3>
 </div>
 
 
@@ -27,13 +27,14 @@
 	<%= @aquaviario_unidade_carga.created_at.to_s_br %>
 </p>
 
-
-<p>
-	<strong>Usuario alterou:</strong>
-	<%= @aquaviario_unidade_carga.usuario_alterou_id %>
-	<strong>Em:</strong>
-	<%= @aquaviario_unidade_carga.updated_at.to_s_br %>
-</p>
+<% if @aquaviario_unidade_carga.usuario_alterou_id != nil %>
+	<p>
+		<strong>Usuario alterou:</strong>
+		<%= @aquaviario_unidade_carga.usuario_alterou.nome %>
+		<strong>Em:</strong>
+		<%= @aquaviario_unidade_carga.updated_at.to_s_br %>
+	</p>
+<% end %>
 
 <h4>Documentos da Unidade</h4>
 <table class="table table-bordered table-striped table-hover">
@@ -51,13 +52,13 @@
 
 	<tbody>
 			
-		<%= content_tag_for(:tr, @aquaviario_unidade_carga.documento_eletronicos) do |aquaviario_documento_eletronico| %>
+		<%= content_tag_for(:tr, @aquaviario_unidade_carga.dcs) do |aquaviario_documento_eletronico| %>
 				
-		<td><%= aquaviario_documento_eletronico.tipo_documento_eletronico.descricao %></td>
+		<td><%= aquaviario_documento_eletronico.tipo_dc.descricao %></td>
 		
 		<td><%= aquaviario_documento_eletronico.documento %></td>
 		
-		<td><%= aquaviario_documento_eletronico.rodoviario_id %></td>
+		<td><%= aquaviario_documento_eletronico.rodoviario.empresa.nome_fantasia %></td>
 				
 		<% end %>
 	</tbody>
