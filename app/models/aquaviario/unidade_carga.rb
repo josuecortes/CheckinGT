@@ -1,11 +1,11 @@
 class Aquaviario::UnidadeCarga < ActiveRecord::Base
-  attr_accessible :dad_id, :placa, :status_desembaraco_data, :status_desembaraco_id, 
-  								:status_processamento_data, :status_processamento_id, :status_unidade_carga_data, 
-  								:status_unidade_carga_id, :termo_fd_data, :termo_fd_id, 
-  								:termo_lacre_id, :termo_vistoria_id, :tipo_unidade_id, :usuario_alterou_id, 
-  								:usuario_id, :porto_destino_id, :data_registro_entrada, 
+  attr_accessible :dad_id, :placa, :status_desembaraco_data, :status_desembaraco_id,
+  								:status_processamento_data, :status_processamento_id, :status_unidade_carga_data,
+  								:status_unidade_carga_id, :termo_fd_data, :termo_fd_id,
+  								:termo_lacre_id, :termo_vistoria_id, :tipo_unidade_id, :usuario_alterou_id,
+  								:usuario_id, :porto_destino_id, :data_registro_entrada,
   								:status_parametrizacao_id, :status_parametrizacao_data
-  								
+
   belongs_to :dad, :class_name=>"Aquaviario::Dad"
   belongs_to :status_desembaraco, :class_name=>"Core::StatusDesembaraco"
   belongs_to :status_processamento, :class_name=>"Core::StatusProcessamento"
@@ -19,11 +19,17 @@ class Aquaviario::UnidadeCarga < ActiveRecord::Base
   belongs_to :usuario_alterou, :foreign_key=>"usuario_alterou_id", :class_name=>"Core::Usuario"
   has_many :dcs, :class_name=>"Aquaviario::Dc"
   belongs_to :porto_destino, :foreign_key=>"porto_destino_id", :class_name=>"Core::Porto"
-  
+
+  has_many :nota_fiscal_eletronicas, :through=>:dcs, :class_name=>"Core::NotaFiscalEletronica"
+
+  #scopo porto
   scope :para_empresa, lambda {|id| {:conditions=>['aquaviario_unidade_cargas.porto_destino_id in (?)', id]}}
   scope :na_condicao, joins(:dad).where('aquaviario_dads.status_dad_id = ?', 10003)
-  scope :na_condicao, joins(:dad).where('aquaviario_dads.status_dad_id = ?', 10003)
-	
+
+  #scopo rodoviario
+  #scope :para_rodoviario, joins(:dcs).where('aquaviario_dcs.rodoviario_id = ?', id)
+  scope :para_rodoviario, lambda {|id| joins(:dcs).where('aquaviario_dcs.rodoviario_id = ?', id)}
+
 	def registrar_tudo
 		  	self.dcs.each do |doc|
 		  		doc.status_dc_id = 10003
@@ -31,17 +37,7 @@ class Aquaviario::UnidadeCarga < ActiveRecord::Base
 		  		doc.save
 		  	end
   end
-	
-	def self.___na_condicao___
-    r = sell.all
-     r.collect! do |uc|
-       if uc.dad.status_dad_id == 10003 
-         uc
-       end
-     end
-     r.compact!
-  end
-  
+
   def self.search(query)
 		if query.present?
 			where(['placa LIKE :query', :query => "%#{query}%"])
@@ -49,7 +45,7 @@ class Aquaviario::UnidadeCarga < ActiveRecord::Base
 			scoped
 		end
 	end
-  
+
 end
 
 

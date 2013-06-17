@@ -1,45 +1,9 @@
 Sec::Application.routes.draw do
 
-  namespace :core do resources :status_parametrizacaos end
-
-  namespace :core do resources :tipo_dcs end
-
-  namespace :core do resources :termo_fds end
-
-  namespace :core do resources :status_termo_fds end
-
-  namespace :core do resources :patio_portos end
-
-  namespace :core do resources :tipo_unidades end
-
-  namespace :core do resources :termo_vistoria_detalhes end
-
-  namespace :core do resources :termo_vistoria end
-
-  namespace :core do resources :termo_lacres end
-
-  
-
-  namespace :core do resources :selo_fiscals end
-
-  namespace :core do resources :fiel_depositarios end
-
-  namespace :core do resources :tipo_detalhes end
-
-  namespace :core do resources :tipo_eventos end
-
-  namespace :core do resources :status_selo_fiscal_tipos end
-
-  namespace :core do resources :status_desembaracos end
-
-  namespace :core do resources :status_processamentos end
-
-  namespace :core do resources :status_unidade_cargas end
-
-  namespace :core do resources :status_dads end
-
   root :to => 'home#index'
+  
   resources :intranet
+  
   resources :home
 
   namespace :core do
@@ -47,16 +11,19 @@ Sec::Application.routes.draw do
       get "resetasenha"
       resources :senhas
     end
+    
     resources :login
     resources :perfil
     resources :modulos do
       resources :sistemas
     end
+    
     resources :grupos do
       resources :grupo_sistemas
       resources :usuario_grupos
     end
     
+
     resources :empresas do
     	resources :empresa_modulos
     	resources :aquaviarios
@@ -64,13 +31,50 @@ Sec::Application.routes.draw do
     	resources :portos
     	resources :rodoviarios
     end
+    
     resources :ufs
-   
-    
-    
+  
+    resources :tipo_solucoes
+
+  	resources :status_parametrizacaos
+
+    resources :tipo_dcs
+
+		resources :termo_fds
+
+		resources :status_termo_fds 
+
+  	resources :patio_portos 
+
+		resources :tipo_unidades 
+		
+		resources :termo_vistoria_detalhes 
+
+		resources :termo_vistoria 
+
+		resources :termo_lacres 
+
+		resources :selo_fiscals 
+
+		resources :fiel_depositarios 
+
+		resources :tipo_detalhes 
+
+		resources :tipo_eventos 
+
+		resources :status_selo_fiscal_tipos 
+
+		resources :status_desembaracos 
+
+		resources :status_processamentos 
+
+		resources :status_unidade_cargas 
+
+		resources :status_dads 
+			
   end
-	
-	namespace :aquaviario do	
+
+	namespace :aquaviario do
 		resources :dads do
 			get "enviar"
 			resources :unidade_cargas do
@@ -78,10 +82,20 @@ Sec::Application.routes.draw do
 			end
 		end
 	end
-	
+
 	namespace :porto do
 		resources :registro_entradas
-		resources :unidade_cargas
+		resources :unidade_cargas do
+			resources :solicitar_saidas
+		end
 	end
+
+  namespace :rodoviario do
+    resources :unidade_cargas do
+      resources :notas do
+      	resources :nota_detalhes
+      end
+    end
+  end
 
 end

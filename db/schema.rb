@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611184754) do
+ActiveRecord::Schema.define(:version => 20130612132952) do
 
   create_table "aquaviario_dads", :force => true do |t|
     t.integer  "empresa_id",                :precision => 38, :scale => 0
@@ -151,9 +151,9 @@ ActiveRecord::Schema.define(:version => 20130611184754) do
 
   create_table "core_nota_fiscal_eletronicas", :force => true do |t|
     t.integer  "dad_id",                       :precision => 38, :scale => 0
-    t.integer  "unidade_carga",                :precision => 38, :scale => 0
+    t.integer  "unidade_carga_id",             :precision => 38, :scale => 0
     t.integer  "tipo_documento_eletronico_id", :precision => 38, :scale => 0
-    t.integer  "documento_eletronico_id",      :precision => 38, :scale => 0
+    t.integer  "dc_id",                        :precision => 38, :scale => 0
     t.integer  "rodoviario_id",                :precision => 38, :scale => 0
     t.integer  "termo_fiel_depositario_id",    :precision => 38, :scale => 0
     t.integer  "selo_fiscal_id",               :precision => 38, :scale => 0
@@ -344,6 +344,12 @@ ActiveRecord::Schema.define(:version => 20130611184754) do
   end
 
   create_table "core_tipo_eventos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "core_tipo_solucoes", :force => true do |t|
     t.string   "descricao"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

@@ -26,4 +26,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 
    inflect.irregular 'liberar_nota', 'liberar_notas'
    inflect.irregular 'core::liberar_nota', 'core::liberar_notas'
+
+   inflect.irregular 'tipo_solucao', 'tipo_solucoes'
+   inflect.irregular 'core::tipo_solucao', 'core::tipo_solucoes'
 end

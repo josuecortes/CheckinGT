@@ -184,6 +184,12 @@ Core::Sistema.find_or_create_by_controlador(:modulo_id=>mp.id, :nome=>"Controle 
 Core::Sistema.find_or_create_by_controlador(:modulo_id=>mp.id, :nome=>"Controle de Unidades de Carga", :sigla=>"ContUnidCargaPorto", :url=>"/porto/unidade_cargas", :controlador=>"Porto::UnidadeCargasController", :status=>true)
 Core::Sistema.find_or_create_by_controlador(:modulo_id=>mp.id, :nome=>"Controle Geral de Solicitacao de Saidas", :sigla=>"ContSolicSaidas", :url=>"", :controlador=>"Porto::SolicitarSaidasController", :status=>true)
 
+#modulo rodoviario
+mr = Core::Modulo.find_or_create_by_nome(:nome=>"Rodoviario", :sigla=>"ModRodo", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>mr.id, :nome=>"Controle de Unidade de Carga", :sigla=>"ContUniCarga", :url=>"/rodoviario/unidade_cargas", :controlador=>"Rodoviario::UnidadeCargasController", :status=>true)
+Core::Sistema.find_or_create_by_controlador(:modulo_id=>mr.id, :nome=>"Controle de Notas", :sigla=>"ContNotas", :url=>"", :controlador=>"Rodoviario::NotasController", :status=>true)
+
+
 
 #modulo transportadoras
 #mm = Core::Modulo.find_or_create_by_nome(:nome=>"Transportadora", :sigla=>"TransBasico", :status=>true)

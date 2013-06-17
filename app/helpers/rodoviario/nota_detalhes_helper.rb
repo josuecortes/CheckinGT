@@ -1,0 +1,2 @@
+module Rodoviario::NotaDetalhesHelper
+end

@@ -1,0 +1,55 @@
+<div class="page-header">
+	<h3><%= link_to "Voltar", rodoviario_unidade_cargas_path %> | Lista de Notas da Unidades de Carga <%= @uc.placa %></h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+
+		<tr>
+
+			<th>DAD</th>
+
+			<th>UC</th>
+
+			<th>DC</th>
+
+			<th>NFE id</th>
+
+			<th>Origem</th>
+
+			<th>Destinatario</th>
+
+			<th>Valor</th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @notas) do |nota| %>
+
+			<td><%= nota.dad_id %></td>
+
+			<td><%= nota.unidade_carga_id %></td>
+
+			<td><%= nota.dc_id %></td>
+
+			<td><%= nota.id %></td>
+
+			<td><%= nota.emitente_cnpj %> - <%= nota.emitente_razao %></td>
+
+			<% if nota.destinatario_razao != nil %>
+				<td><%= nota.destinatario_cnpj %> - <%= nota.destinatario_razao %></td>
+			<% else %>
+				<td><%= nota.destinatario_cpf %> - <%= nota.destinatario_nome %></td>
+			<% end %>
+
+			<td><%= nota.valor_nota.real_contabil %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @notas, :previous_label => '<<', :next_label => '>>' %>
+</div>

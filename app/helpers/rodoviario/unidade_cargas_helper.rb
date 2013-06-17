@@ -1,0 +1,2 @@
+module Rodoviario::UnidadeCargasHelper
+end
